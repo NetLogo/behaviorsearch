@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Paths;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,6 +69,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import org.nlogo.swing.BrowserLauncher;
 
 public class MainController implements Initializable {
 	// component outside of tab will have normal name
@@ -156,10 +160,10 @@ public class MainController implements Initializable {
 	private String lastSavedText;
 	protected RunOptions runOptions;
 	Image icon = new Image(GeneralUtils.getResource("icon_behaviorsearch.png").toURI().toString());
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		// set up ChoiceBox in SO tab
 		SOGoalBox.setItems(FXCollections.observableArrayList("Minimize Fitness", "Maximize Fitness"));
 		List<String> fitnessCollecting = new ArrayList<String>();
@@ -222,8 +226,8 @@ public class MainController implements Initializable {
 
 	}
 
-	
-	
+
+
 	public void helpDialog(String title, String content){
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
@@ -235,38 +239,38 @@ public class MainController implements Initializable {
 
 		alert.showAndWait();
 	}
-	
+
 	public void helpSearchSpaceAction(ActionEvent event) {
-		helpDialog("Help about search space specification", "<HTML><BODY>" + 
+		helpDialog("Help about search space specification", "<HTML><BODY>" +
 				"Specifying the range of parameters to be searched works much the same as the BehaviorSpace tool in NetLogo:" +
 				"<PRE> [ \"PARAM_NAME\" VALUE1 VALUE2 VALUE3 ... ] </PRE>" +
 				"or <PRE> [ \"PARAM_NAME\" [RANGE_START INCREMENT RANGE_END] ] </PRE>" +
-				"<P>One slight difference is that INCREMENT may be \"C\", which means to search the range continously " + 
-				"(or at least with fine resolution, if the chromosomal representation doesn't allow for continuous parameters)</P>" + 
+				"<P>One slight difference is that INCREMENT may be \"C\", which means to search the range continously " +
+				"(or at least with fine resolution, if the chromosomal representation doesn't allow for continuous parameters)</P>" +
 				"</BODY></HTML>");
 	}
-	
+
 	public void helpSearchSpaceRepresentationAction(ActionEvent event) {
-		
+
 		String chromosomeType = SAChromosomeTypeBox.getValue();
-		
+
 		try {
 			ChromosomeFactory factory = ChromosomeTypeLoader.createFromName(chromosomeType);
-			
+
 			helpDialog("Help about " + chromosomeType, factory.getHTMLHelpText() + "<BR><BR>");
 		} catch (BehaviorSearchException ex)
 		{
 			handleError(ex.toString());
 		}
 	}
-	
+
 	public void helpEvaluationAction(ActionEvent event) {
 		helpDialog("Help about fitness evaluation", "<HTML><BODY>" +
-				"An objective function must condense the data collected from multiple model runs into a single number, " 
+				"An objective function must condense the data collected from multiple model runs into a single number, "
 				+ "which is what the search process will either attempt to minimize or maximize." +
 				"</BODY></HTML>");
 	}
-	
+
 	public void helpSearchMethodAction(ActionEvent event) {
 		SearchMethod sm = searchMethodChoices.get(SASearchMethodBox.getValue());
 		helpDialog("Help about " + sm.getName(), sm.getHTMLHelpText());
@@ -279,17 +283,17 @@ public class MainController implements Initializable {
 			return null;
 		}
 	}
-	
+
 	public void showTutorialAction(ActionEvent event) {
 		SwingUtilities.invokeLater(new Runnable() {
-		    @Override
-		    public void run() {
-				org.nlogo.swing.BrowserLauncher.openURL(null,GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html"),true);
-		    }
+			@Override
+			public void run() {
+					BrowserLauncher.openPath(Paths.get(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html")), "");
+			}
 		});
 	}
 	public void showAboutAction(ActionEvent event) {
-		
+
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("About BehaviorSearch...");
 		alert.setHeaderText(null);
@@ -297,7 +301,7 @@ public class MainController implements Initializable {
 		ButtonType browseWebsite = new ButtonType("Browse BehaviorSearch web site");
 		ButtonType close = new ButtonType("Close", ButtonData.CANCEL_CLOSE);
 		alert.getButtonTypes().setAll(browseWebsite, close);
-		
+
 		TextArea content = new TextArea();
 		File creditsFile = new File(GeneralUtils.attemptResolvePathFromBSearchRoot("CREDITS.TXT"));
 		File licFile = new File(GeneralUtils.attemptResolvePathFromBSearchRoot("LICENSE.TXT"));
@@ -305,12 +309,12 @@ public class MainController implements Initializable {
 		try {
 			creditsText = GeneralUtils.stringContentsOfFile(creditsFile);
 			licText = GeneralUtils.stringContentsOfFile(licFile);
-		} catch (FileNotFoundException ex) 
+		} catch (FileNotFoundException ex)
 		{
 			creditsText = "ERROR: Either CREDITS.TXT or LICENSE.TXT file not found.";
 			licText = "";
 		}
-		
+
 		content.setText("BehaviorSearch v" + GeneralUtils.getVersionString() + "\n" +
 				creditsText + "\n*****\n\n"
 				+ licText);
@@ -319,20 +323,20 @@ public class MainController implements Initializable {
         alert.getDialogPane().setContent(content);;
 
         Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == browseWebsite){
-			SwingUtilities.invokeLater(new Runnable() {
-			    @Override
-			    public void run() {
-					org.nlogo.swing.BrowserLauncher.openURL(null, "http://www.behaviorsearch.org/", false);
-			    }
-			});
-		} 
+				if (result.get() == browseWebsite){
+					SwingUtilities.invokeLater(new Runnable() {
+						@Override
+						public void run() {
+							BrowserLauncher.openURIString("http://www.behaviorsearch.org/");
+						}
+					});
+				}
 		// ...otherwise user chose CANCEL or closed the dialog
 
-		
+
 	}
 
-	
+
 	public void browseFile(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		File parentFolder = new File(browseField.getText()).getParentFile();
@@ -354,15 +358,15 @@ public class MainController implements Initializable {
 		}
 	}
 
-	
+
 	public void actionNew() {
-				
-		if (!checkDiscardOkay()) { return; } 
+
+		if (!checkDiscardOkay()) { return; }
 		currentFile = null;
 		MParamSpecsArea.setText("[\"integerParameter\" [0 1 10]] \n" +
 		"[\"continuousParameter\" [0.0 \"C\" 1.0]] \n " +
 		"[\"choiceParameter\" \"near\" \"far\"] \n");
-		 
+
 		SearchProtocol protocol;
 		try {
 			protocol = SearchProtocol.load(defaultProtocolXMLForNewSearch);
@@ -390,7 +394,7 @@ public class MainController implements Initializable {
 			;
 
 		}
-		
+
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("bsearch File", "*.bsearch"),
 				new ExtensionFilter("XML File", "*.xml"));
 
@@ -405,25 +409,25 @@ public class MainController implements Initializable {
 		}
 		FileChooser chooser = new FileChooser();
 
-		
+
 		try {
 			chooser.setInitialDirectory(new File(GeneralUtils.attemptResolvePathFromBSearchRoot("examples")));
 		} catch (Exception e) {
-			
+
 			handleError("Error: cannot find Example folder", e);
 		}
-		
-		
+
+
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("bsearch File", "*.bsearch"),
 				new ExtensionFilter("XML File", "*.xml"));
 
 		File selectedFile = chooser.showOpenDialog(null);
-		
+
 		if (selectedFile != null) {
 			openFile(selectedFile);
 		}
 	}
-	
+
 	public void actionOpenTest() {
 		File selectedFile = new File("C:/Users/AnNguyen/Google Drive/behaviorsearch/behaviorsearch/examples/TestForFX.bsearch"
 );
@@ -477,16 +481,16 @@ public class MainController implements Initializable {
 		SACachingCheckBox.setSelected(protocol.caching);
 		SABestCheckingField.setText(Integer.toString(protocol.bestCheckingNumReplications));
 		SAEvaluationLimitField.setText(Integer.toString(protocol.evaluationLimit));
-		lastSavedText = protocol.toXMLString(); 
-		runOptions = null; 
+		lastSavedText = protocol.toXMLString();
+		runOptions = null;
 		//the runOptions to defaults, when a different Protocol is loaded
 	}
 
 	private SearchProtocol createProtocolFromFormData() throws UIConstraintException {
 		HashMap<String, String> searchMethodParams = new java.util.LinkedHashMap<String, String>();
-		
+
 		List<SearchMethodParamTableRow> currentTable = SASearchMethodTable.getItems();
-		
+
 		for (SearchMethodParamTableRow row : currentTable) {
 			searchMethodParams.put(row.getParam().trim(), row.getValue().trim());
 		}
@@ -575,7 +579,7 @@ public class MainController implements Initializable {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("bsearch File", "*.bsearch"));
 
-		
+
 		File parentFolder = null;
 		if (currentFile != null) {
 			parentFolder = currentFile.getParentFile();
@@ -588,7 +592,7 @@ public class MainController implements Initializable {
 			chooser.setInitialDirectory(parentFolder);
 		}
 
-		
+
 		File tempFile = chooser.showSaveDialog(null);
 		if (tempFile != null) {
 			currentFile = tempFile;
@@ -613,12 +617,12 @@ public class MainController implements Initializable {
 			handleError("IO Error occurred attempting to save file: " + currentFile.getPath(),ex);
 		} catch (UIConstraintException ex) {
 			System.out.println(ex.getMessage());
-			
+
 		}
 	}
-	
 
-	
+
+
 
 	public boolean protocolChangedSinceLastSave() {
 		String xmlStr = "";
@@ -628,26 +632,26 @@ public class MainController implements Initializable {
 			return false;
 		}
 		try {
-			
+
 			xmlStr = createProtocolFromFormData().toXMLString();
 		} catch (UIConstraintException ex) {
 			// if we can't create a valid protocol object from the form data,
 			// assume the user has changed something...
 			return true;
 		}
-		
+
 		return !lastSavedText.equals(xmlStr);
-		
+
 	}
 
 	boolean checkDiscardOkay() {
 		boolean check = true;
 		if (protocolChangedSinceLastSave()) {
-	
+
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Discard changes?");
 			alert.setHeaderText("Discard changes you've made to this search experiment?");
-			
+
 
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
@@ -656,7 +660,7 @@ public class MainController implements Initializable {
 			    check = false;
 			}
 		}
-				
+
 		return check;
 	}
 
@@ -695,12 +699,12 @@ public class MainController implements Initializable {
 	}
 
 	public void actionRunNow(ActionEvent event) {
-		
-		
-		
+
+
+
 		if (runOptions == null)
 		{
-			
+
 			runOptions = new BehaviorSearch.RunOptions();
 			//suggest a filename stem for output files, which users can change.
 			if (currentFile != null)
@@ -713,14 +717,14 @@ public class MainController implements Initializable {
 			else
 			{
 				//TODO: Use folder where the NetLogo model is located instead?
-				runOptions.outputStem =  new File(defaultUserDocumentsFolder, "mySearchOutput").getPath();	
+				runOptions.outputStem =  new File(defaultUserDocumentsFolder, "mySearchOutput").getPath();
 			}
 		}
 		if (currentFile != null)
 		{
 			runOptions.protocolFilename = this.currentFile.getAbsolutePath();
 		}
-		
+
 		Stage stage = new Stage();
 		Parent root;
 		try {
@@ -734,12 +738,12 @@ public class MainController implements Initializable {
 			RunOptionDialogController runController = loader.getController();
 			runController.ini(runOptions, this);
 			stage.showAndWait();
-			
+
 		} catch (IOException e) {
 			handleError("Required file not found: RunOptionDialog.fxml \nThe program will not run properly");
 		}
-	}		
-	
+	}
+
 	public static void handleError(String msg1, Throwable e) {
 		Platform.runLater(new Runnable() {
 			public void run() {
@@ -772,17 +776,17 @@ public class MainController implements Initializable {
 		});
 
 	}
-	
+
 	public static void handleError(String msg1) {
 		handleError(msg1, null);
 	}
 	public void displayProgressDialog(){
 		SearchProtocol protocol;
-		
+
 		try {
 			protocol = createProtocolFromFormData();
 		} catch (UIConstraintException e) {
-			handleError("Error creating SearchProtocol: " + e.getMessage(),null);			
+			handleError("Error creating SearchProtocol: " + e.getMessage(),null);
 			return;
 		}
 		Stage stage = new Stage();
@@ -798,14 +802,14 @@ public class MainController implements Initializable {
 			ProgressController progressController = loader.getController();
 			progressController.startSearchTask(protocol, runOptions);
 			stage.show();
-			
+
 		} catch (IOException e) {
 			handleError("Required file not found: ProgressDialog.fxml \nThe program will not run properly");
 		}
-		
+
 	}
 
-	
+
 	private void updateSearchMethodParamTable(SearchMethod searchMethod, HashMap<String, String> searchMethodParams) {
 		// if the search method in the protocol is missing some parameters, fill
 		// them in with defaults
@@ -817,12 +821,12 @@ public class MainController implements Initializable {
 		}
 		this.SASearchMethodTable.setEditable(true);
 
-		
+
 		List<SearchMethodParamTableRow> paramTable = new ArrayList<SearchMethodParamTableRow>();
 		for (String s : searchMethodParams.keySet()) {
 			paramTable.add(new SearchMethodParamTableRow(s, searchMethodParams.get(s)));
 		}
-		
+
 		SAValCol.setCellFactory(AcceptOnExitTableCell.forTableColumn());
 		// set up table data
 		SAParamCol.setCellValueFactory(new PropertyValueFactory<SearchMethodParamTableRow, String>("param"));
@@ -838,7 +842,7 @@ public class MainController implements Initializable {
 			}
 		});
 	}
-		
+
 	private class UIConstraintException extends Exception {
 		private String title;
 

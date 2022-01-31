@@ -19,17 +19,17 @@ public class SearchMethodLoader {
 		}
 		SearchMethod searcher;
 		try {
-			searcher = (SearchMethod) Class.forName(searchMethodClassName).newInstance();
+			searcher = (SearchMethod) Class.forName(searchMethodClassName).getDeclaredConstructor().newInstance();
 		}
 		catch (Exception ex)
-		{        	
+		{
 			System.err.println(ex.getMessage());
 			ex.printStackTrace();
 			throw new BehaviorSearchException("Failed to find/load SearchMethod from Java class: " + searchMethodClassName );
 		}
 		return searcher;
 	}
-	
+
 	public static List<String> getAllSearchMethodNames() throws BehaviorSearchException
 	{
 		Scanner scanner;
@@ -38,15 +38,15 @@ public class SearchMethodLoader {
 		} catch (FileNotFoundException e) {
 			throw new BehaviorSearchException("Error loading list of SearchMethod names: File 'SearchMethodList.txt' couldn't be found.");
 		}
-		
+
 		LinkedList<String> list = new LinkedList<String>();
-		
+
 		while ( scanner.hasNextLine() )
 		{
 			String s = scanner.nextLine();
 			if (s.trim().length() > 0)
 			{
-				list.add(s);			
+				list.add(s);
 			}
 		}
 		return list;

@@ -10,7 +10,7 @@ import bsearch.util.GeneralUtils;
 
 public class ChromosomeTypeLoader {
 
-	
+
 	public static ChromosomeFactory createFromName(String chromosomeName) throws BehaviorSearchException
 	{
 		String chromosomeFactoryClassName = chromosomeName;
@@ -23,7 +23,7 @@ public class ChromosomeTypeLoader {
 		}
 		ChromosomeFactory factory;
 		try {
-			factory = (ChromosomeFactory) Class.forName(chromosomeFactoryClassName).newInstance();
+			factory = (ChromosomeFactory) Class.forName(chromosomeFactoryClassName).getDeclaredConstructor().newInstance();
 		}
 		catch (Exception ex)
 		{
@@ -33,7 +33,7 @@ public class ChromosomeTypeLoader {
 		}
 		return factory;
 	}
-	
+
 	public static List<String> getAllChromosomeTypes() throws BehaviorSearchException
 	{
 		Scanner scanner;
@@ -42,15 +42,15 @@ public class ChromosomeTypeLoader {
 		} catch (FileNotFoundException e) {
 			throw new BehaviorSearchException("Error loading list of Chromosome class names: File 'ChromosomeTypeList.txt' couldn't be found.");
 		}
-		
+
 		LinkedList<String> list = new LinkedList<String>();
-		
+
 		while ( scanner.hasNextLine() )
 		{
 			String s = scanner.nextLine();
 			if (s.trim().length() > 0)
 			{
-				list.add(s);			
+				list.add(s);
 			}
 		}
 		scanner.close();

@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 
+import org.nlogo.swing.BrowserLauncher;
+
 public class HelpAboutDialog extends javax.swing.JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -36,12 +38,12 @@ public class HelpAboutDialog extends javax.swing.JDialog {
 		try {
 			creditsText = GeneralUtils.stringContentsOfFile(creditsFile);
 			licText = GeneralUtils.stringContentsOfFile(licFile);
-		} catch (FileNotFoundException ex) 
+		} catch (FileNotFoundException ex)
 		{
 			creditsText = "ERROR: Either CREDITS.TXT or LICENSE.TXT file not found.";
 			licText = "";
 		}
-		
+
 		jTextPaneContent.setText("BehaviorSearch v" + GeneralUtils.getVersionString() + "\n" +
 				creditsText + "\n*****\n\n"
 				+ licText);
@@ -53,14 +55,14 @@ public class HelpAboutDialog extends javax.swing.JDialog {
 
 		JPanel panelSouth = new JPanel();
 		getContentPane().add(panelSouth, BorderLayout.SOUTH);
-		
+
 		jButtonWebsite= new JButton("Browse BehaviorSearch web site");
 		jButtonWebsite.setForeground(java.awt.Color.blue);
 		panelSouth.add(jButtonWebsite);
 		jButtonWebsite.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				org.nlogo.swing.BrowserLauncher.openURL(HelpAboutDialog.this, "http://www.behaviorsearch.org/", false);
-			}					
+				BrowserLauncher.openURI(HelpAboutDialog.this, BrowserLauncher.makeURI(HelpAboutDialog.this, "http://www.behaviorsearch.org/"));
+			}
 		});
 
 		jButtonOk = new JButton("Close");
@@ -68,9 +70,9 @@ public class HelpAboutDialog extends javax.swing.JDialog {
 		jButtonOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-			}					
+			}
 		});
-		
+
 
 
 		// make sure the OK button always gets focus, so it's easy to close the help dialog.
@@ -81,7 +83,7 @@ public class HelpAboutDialog extends javax.swing.JDialog {
 		    }
 		});
 
-		 
+
 		this.pack();  // size the window based on the textpane's contents
 		// but long lines of text can cause the size of the window to be ridiculous, so we fix it
 		if (this.getWidth() > 640)
@@ -94,13 +96,13 @@ public class HelpAboutDialog extends javax.swing.JDialog {
 		}
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
-	
+
 	public static void showAboutDialog(JFrame parent)
 	{
 		HelpAboutDialog hdialog = new HelpAboutDialog(parent, "About BehaviorSearch...");
 		hdialog.setLocationRelativeTo(null);
-		hdialog.setVisible(true);		
+		hdialog.setVisible(true);
 	}
 
-	
+
 }

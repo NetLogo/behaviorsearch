@@ -15,6 +15,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,7 +77,7 @@ import java.awt.FlowLayout;
 public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
- 
+
 	private static String getWindowTitleSuffix()
 	{
 		return " - BehaviorSearch " + GeneralUtils.getVersionString();
@@ -98,7 +99,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				// the swing.defaultlaf property.
 				javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 			}
-			
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -128,7 +129,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	private JScrollPane jScrollPane1;
 	private JTable jTableSearchMethodParams;
 	private JPanel jPanel1;
-	private JButton jButtonHelpSearchSpace; 
+	private JButton jButtonHelpSearchSpace;
 	private JLabel jLabelDerivWRT;
 	private JLabel jLabelDerivDELTA;
 	private JTextField jTextFieldFitnessDerivativeDelta;
@@ -137,7 +138,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	private JCheckBox jCheckBoxFitnessDerivativeUseAbs;
 	private JPanel jPanelDeriv;
 	private JPanel jPanelDeriv2;
-	private JButton jButtonHelpSearchSpaceRepresentation; 
+	private JButton jButtonHelpSearchSpaceRepresentation;
 	private JSeparator jSeparator2;
 	private JMenuItem jMenuItemOpenExample;
 	private JMenuItem jMenuItemAbout;
@@ -146,9 +147,9 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	private JTextField jTextFieldBestChecking;
 	private JLabel jLabel19;
 	private JCheckBox jCheckBoxCaching;
-	private JButton jButtonSuggestParamRanges; 
-	private JButton jButtonHelpEvaluation; 
-	private JButton jButtonHelpSearchMethod; 
+	private JButton jButtonSuggestParamRanges;
+	private JButton jButtonHelpEvaluation;
+	private JButton jButtonHelpSearchMethod;
 	private JTextField jTextFieldEvaluationLimit;
 	private JLabel jLabel18;
 	private JLabel jLabel9;
@@ -200,7 +201,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			}
 		});
 	}
-	
+
   public static void initAppHandler(Object appHandler) {
     try {
       if (appHandler != null) {
@@ -225,10 +226,10 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 
 	public BehaviorSearchGUI() {
 		super();
-		initGUI(); // mainly Jigloo-generated UI code 
+		initGUI(); // mainly Jigloo-generated UI code
 		finishInitWork(); // custom stuff
 	}
-	
+
 	private void initGUI() {
 		try {
 			setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -239,7 +240,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				public void windowDeactivated(WindowEvent arg0) { }
 				public void windowDeiconified(WindowEvent arg0) { }
 				public void windowIconified(WindowEvent arg0) { }
-				public void windowOpened(WindowEvent arg0) { }			
+				public void windowOpened(WindowEvent arg0) { }
 			});
 			GridBagLayout thisLayout = new GridBagLayout();
 			getContentPane().setLayout(thisLayout);
@@ -338,7 +339,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 								actionHelpTutorial();
 							}
 						});
-						
+
 					}
 					{
 						jMenuItemAbout = new JMenuItem();
@@ -429,7 +430,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				getContentPane().add(jPanelSampling, new GridBagConstraints(3, 13, 2, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 				jPanelSampling.setOpaque(false);
 				{
-					ComboBoxModel<String> jComboBoxSamplingMethodModel = 
+					ComboBoxModel<String> jComboBoxSamplingMethodModel =
 						new DefaultComboBoxModel<String>(
 								new String[] { "Fixed Sampling" }); //, "Adaptive Sampling" });
 					jComboBoxFitnessSamplingMethod = new JComboBox<String>();
@@ -439,7 +440,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 					jComboBoxFitnessSamplingMethod.addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
 							actionSamplingMethodChanged();
-						}					
+						}
 						});
 					}
 				{
@@ -461,7 +462,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				getContentPane().add(jScrollPane1, new GridBagConstraints(1, 12, 1, 4, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
 				jScrollPane1.setPreferredSize(new java.awt.Dimension(202, 58));
 				{
-					TableModel jTableSearchMethodParamsModel = 
+					TableModel jTableSearchMethodParamsModel =
 						new DefaultTableModel(
 								new String[][] { { "population", "100" }, { "mutation-rate", "1.0" } , { "crossover-rate", "0.70" }},
 									new String[] { "Parameter", "Value" });
@@ -482,7 +483,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				});
 			}
 			{
-				ComboBoxModel<String> jComboBoxMinMaxModel = 
+				ComboBoxModel<String> jComboBoxMinMaxModel =
 					new DefaultComboBoxModel<String>(
 							new String[] { "Minimize Fitness", "Maximize Fitness" });
 				jComboBoxFitnessMinMax = new JComboBox<String>();
@@ -528,7 +529,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 						actionBrowseModel();
 					}
 				});
-				
+
 			}
 			{
 				jScrollPane2 = new JScrollPane();
@@ -550,7 +551,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				jLabel11.setFont(new java.awt.Font("SansSerif",1,11));
 			}
 			{
-				ComboBoxModel<String> jComboBoxChromosomeTypeModel = 
+				ComboBoxModel<String> jComboBoxChromosomeTypeModel =
 					new DefaultComboBoxModel<String>(
 							new String[] { "MixedTypeChromosome" });
 				jComboBoxChromosomeType = new JComboBox<String>();
@@ -564,7 +565,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				jLabel13.setFont(new java.awt.Font("SansSerif",1,11));
 			}
 			{
-				ComboBoxModel<String> jComboBox1Model = 
+				ComboBoxModel<String> jComboBox1Model =
 					new DefaultComboBoxModel<String>(
 							new String[] { "Item One", "Item Two" });
 				jComboBoxFitnessCollecting = new JComboBox<String>();
@@ -590,7 +591,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				jLabel16.setFont(new java.awt.Font("SansSerif",1,11));
 			}
 			{
-				ComboBoxModel<String> jComboBox1Model = 
+				ComboBoxModel<String> jComboBox1Model =
 					new DefaultComboBoxModel<String>(
 							new String[] { "Item One", "Item Two" });
 				jComboBoxFitnessCombineReplications = new JComboBox<String>();
@@ -668,10 +669,10 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 						actionHelpSearchMethod();
 					}
 				});
-				
+
 			}
 			{
-				ComboBoxModel<String> jComboBoxSearchMethodModel = 
+				ComboBoxModel<String> jComboBoxSearchMethodModel =
 					new DefaultComboBoxModel<String>(
 							new String[] { "xxxx", "yyyy" });
 				jComboBoxSearchMethodType = new JComboBox<String>();
@@ -679,8 +680,8 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				jComboBoxSearchMethodType.setModel(jComboBoxSearchMethodModel);
 				jComboBoxSearchMethodType.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0) {
-						actionUpdateSearchMethodParams();						
-					}					
+						actionUpdateSearchMethodParams();
+					}
 				});
 			}
 			{
@@ -759,7 +760,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 							updateFitnessDerivativePanel();
 						}
 					});
-					
+
 					jCheckBoxFitnessDerivativeUseAbs = new JCheckBox();
 					jCheckBoxFitnessDerivativeUseAbs.setText("Use ABS value?");
 					jCheckBoxFitnessDerivativeUseAbs.setToolTipText("You might want to take the absolute value if you don't care about the direction of the measured change... e.g., for trying to find phase transitions");
@@ -776,7 +777,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 						jLabelDerivWRT.setText("w.r.t.");
 					}
 					{
-						ComboBoxModel<String> jComboBoxFitnessDerivativeParameterModel = 
+						ComboBoxModel<String> jComboBoxFitnessDerivativeParameterModel =
 							new DefaultComboBoxModel<String>(
 									new String[] { "----" });
 						jComboBoxFitnessDerivativeParameter = new JComboBox<String>();
@@ -804,7 +805,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 						jTextFieldFitnessDerivativeDelta.setText("0.100");
 						jTextFieldFitnessDerivativeDelta.setToolTipText("How much should be subtracted from the parameter's value, to get the measured change?");
 						int prefHeight = jTextFieldFitnessDerivativeDelta.getPreferredSize().height;
-						jTextFieldFitnessDerivativeDelta.setPreferredSize(new Dimension(50, prefHeight));						
+						jTextFieldFitnessDerivativeDelta.setPreferredSize(new Dimension(50, prefHeight));
 					}
 				}
 			}
@@ -814,11 +815,11 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	//the special comment on the next line marks the remaining code so the Jigloo gui builder won't try to parse it.  
+	//the special comment on the next line marks the remaining code so the Jigloo gui builder won't try to parse it.
 	//$hide>>$
-	
+
 	private String defaultProtocolXMLForNewSearch;
 
 	private File currentFile;
@@ -827,7 +828,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	BehaviorSearch.RunOptions runOptions = null;	// keep track of what options they ran the search with last time,
 													// and use those as the offered options when they run again.
 	private File defaultUserDocumentsFolder = new JFileChooser().getCurrentDirectory();
-	
+
 	public static void handleError(String msg, java.awt.Container parentContainer)
 	{
 		JOptionPane wrappingTextOptionPane = new JOptionPane(msg, JOptionPane.ERROR_MESSAGE) {
@@ -837,25 +838,25 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		javax.swing.JDialog dialog = wrappingTextOptionPane.createDialog(parentContainer, "Error!");
 		dialog.setVisible(true);
 //		javax.swing.JOptionPane.showMessageDialog(this, msg, "ERROR!", JOptionPane.ERROR_MESSAGE);
-		
+
 	}
 	private void handleError(String msg)
 	{
 		handleError(msg,this);
 	}
-	
+
 	private void finishInitWork()
 	{
 		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(GeneralUtils.getResource("icon_behaviorsearch.png").getAbsolutePath()));
 
 		// Set a few keyboard shortcuts for menu item
-		jMenuItemNew.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'N' , 
-				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) ) ;
-		jMenuItemOpen.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'O' , 
-				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) ) ;
-		jMenuItemSave.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'S' , 
-				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) ) ;
-		
+		jMenuItemNew.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'N' ,
+				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() ) ) ;
+		jMenuItemOpen.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'O' ,
+				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() ) ) ;
+		jMenuItemSave.setAccelerator( javax.swing.KeyStroke.getKeyStroke( 'S' ,
+				java.awt.Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx() ) ) ;
+
 		// load our default 'new' search configuration from a file
 		try {
 			defaultProtocolXMLForNewSearch = GeneralUtils.stringContentsOfFile(GeneralUtils.getResource("defaultNewSearch.xml"));
@@ -864,14 +865,14 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			handleError(ex.getMessage());
 			System.exit(1);
 		}
-		
+
 		initComboBoxes();
-		
+
 		actionNew();
 	}
-	
+
 	/*
-	 * Some of the choices for combo boxes need to be filled in dynamically, based on reading files and such. 
+	 * Some of the choices for combo boxes need to be filled in dynamically, based on reading files and such.
 	 */
 	private void initComboBoxes()
 	{
@@ -930,7 +931,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 
 	private void updateFitnessDerivativePanel()
 	{
-		boolean enabled = jCheckBoxTakeDerivative.isSelected(); 
+		boolean enabled = jCheckBoxTakeDerivative.isSelected();
 		jLabelDerivWRT.setEnabled(enabled);
 		jLabelDerivDELTA.setEnabled(enabled);
 		jComboBoxFitnessDerivativeParameter.setEnabled(enabled);
@@ -991,7 +992,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			return;
 		}
 
-	    JFileChooser chooser = new JFileChooser(); 
+	    JFileChooser chooser = new JFileChooser();
 	    if (currentFile != null)
 	    {
 	    	chooser.setSelectedFile(currentFile);
@@ -1001,10 +1002,10 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	    chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
 		        "Search protocols (*.bsearch)", "bsearch"));
 	    int returnVal = chooser.showOpenDialog(this);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
+	    if(returnVal == JFileChooser.APPROVE_OPTION)
 	    {
 	    	openFile(chooser.getSelectedFile());
-	    }	    
+	    }
 	}
 	private void actionOpenExample()
 	{
@@ -1012,16 +1013,16 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		{
 			return;
 		}
-	    JFileChooser chooser = new JFileChooser(GeneralUtils.attemptResolvePathFromBSearchRoot("examples")); 
+	    JFileChooser chooser = new JFileChooser(GeneralUtils.attemptResolvePathFromBSearchRoot("examples"));
 	    chooser.addChoosableFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
 		        "Completed search configurations (*.xml)", "xml"));
 	    chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
 		        "Search protocols (*.bsearch)", "bsearch"));
 	    int returnVal = chooser.showOpenDialog(this);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
+	    if(returnVal == JFileChooser.APPROVE_OPTION)
 	    {
 	    	openFile(chooser.getSelectedFile());
-	    }	    
+	    }
 	}
 
   // the following three "handle" methods are called reflectively by the
@@ -1060,7 +1061,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 
 			currentFile = fProtocol;
 			loadProtocol(protocol);
-			this.setTitle(currentFile.getName() + getWindowTitleSuffix());		
+			this.setTitle(currentFile.getName() + getWindowTitleSuffix());
 		} catch (IOException e) {
 			handleError("IO Error occurred attempting to load file: " + fProtocol.getPath());
 			e.printStackTrace();
@@ -1100,10 +1101,10 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		jCheckBoxCaching.setSelected(protocol.caching);
 		jTextFieldBestChecking.setText(Integer.toString(protocol.bestCheckingNumReplications));
 		jTextFieldEvaluationLimit.setText(Integer.toString(protocol.evaluationLimit));
-		
-		lastSavedText = protocol.toXMLString();		
+
+		lastSavedText = protocol.toXMLString();
 		runOptions = null; // reset the runOptions to defaults, when a different Protocol is loaded
-		
+
 	}
 	private void actionSave()
 	{
@@ -1113,7 +1114,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		}
 		else
 		{
-		    doSave();			
+		    doSave();
 		}
 	}
 	private void actionSaveAs()
@@ -1130,17 +1131,17 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 	    chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
 		        "Search protocols (*.bsearch)", "bsearch"));
 	    int returnVal = chooser.showSaveDialog(this);
-	    if(returnVal == JFileChooser.APPROVE_OPTION) 
+	    if(returnVal == JFileChooser.APPROVE_OPTION)
 	    {
 	    	currentFile = chooser.getSelectedFile();
 		    doSave();
 			this.setTitle(currentFile.getName() + getWindowTitleSuffix());
-	    }	    
+	    }
 	}
 	private SearchProtocol createProtocolFromFormData() throws UIConstraintException
 	{
 		HashMap<String, String> searchMethodParams = new java.util.LinkedHashMap<String, String>();
-		TableModel model = jTableSearchMethodParams.getModel(); 
+		TableModel model = jTableSearchMethodParams.getModel();
 		for (int i = 0; i < model.getRowCount(); i++)
 		{
 			searchMethodParams.put(model.getValueAt(i, 0).toString().trim(), model.getValueAt(i, 1).toString());
@@ -1149,7 +1150,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		int modelStepLimit = 0;
 		try {
 			modelStepLimit = Integer.valueOf(jTextFieldModelStepLimit.getText());
-			if (modelStepLimit < 0) 
+			if (modelStepLimit < 0)
 			{
 				throw new NumberFormatException();
 			}
@@ -1163,7 +1164,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		{
 			try {
 				fitnessSamplingRepetitions = Integer.valueOf(jTextFieldFitnessSamplingRepetitions.getText());
-				if (fitnessSamplingRepetitions < 0) 
+				if (fitnessSamplingRepetitions < 0)
 				{
 					throw new NumberFormatException();
 				}
@@ -1173,11 +1174,11 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			}
 		}
 		boolean caching = jCheckBoxCaching.isSelected();
-		
+
 		int evaluationLimit = 0;
 		try {
 			evaluationLimit = Integer.valueOf(jTextFieldEvaluationLimit.getText());
-			if (evaluationLimit <= 0) 
+			if (evaluationLimit <= 0)
 			{
 				throw new NumberFormatException();
 			}
@@ -1189,7 +1190,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		int bestCheckingNumReplications = 0;
 		try {
 			bestCheckingNumReplications = Integer.valueOf(jTextFieldBestChecking.getText());
-			if (bestCheckingNumReplications < 0) 
+			if (bestCheckingNumReplications < 0)
 			{
 				throw new NumberFormatException();
 			}
@@ -1207,8 +1208,8 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				throw new UIConstraintException("The DELTA value (for taking the derivative of the objective fucntion with respect to a parameter) needs to be a number", "Error: can't create search protocol");
 			}
 		}
-		
-		SearchProtocol protocol = new SearchProtocol(jTextFieldModelFile.getText(), 
+
+		SearchProtocol protocol = new SearchProtocol(jTextFieldModelFile.getText(),
 				java.util.Arrays.asList(jTextAreaParamSpecs.getText().split("\n")),
 				jTextFieldModelStepCommands.getText(), jTextFieldModelSetupCommands.getText(), jTextFieldModelStopCondition.getText(),
 				modelStepLimit,
@@ -1236,7 +1237,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			java.io.FileWriter fout;
 			try {
 				fout = new java.io.FileWriter(currentFile);
-				SearchProtocol protocol = createProtocolFromFormData(); 
+				SearchProtocol protocol = createProtocolFromFormData();
 				protocol.save(fout);
 				fout.close();
 				lastSavedText = protocol.toXMLString();
@@ -1261,15 +1262,15 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		String xmlStr = "";
 		try {
 			xmlStr = createProtocolFromFormData().toXMLString();
-		} catch (UIConstraintException ex) 
+		} catch (UIConstraintException ex)
 		{
 			// if we can't create a valid protocol object from the form data, assume the user has changed something...
-			return true;    
+			return true;
 		}
 		//System.out.println(xmlStr);
 		//System.out.println("--");
 		//System.out.println(lastSavedText);
-		
+
 		// Note: lastSavedText == null ONLY when the GUI is being loaded for the first time.
 		return (lastSavedText != null && !lastSavedText.equals(xmlStr));
 	}
@@ -1281,7 +1282,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 					== JOptionPane.NO_OPTION)
 			{
 				return false;
-			}			
+			}
 		}
 		return true;
 	}
@@ -1295,7 +1296,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
         	{
         		searchMethodParams.put(key, defaultParams.get(key));
         	}
-        }        
+        }
 
 		DefaultTableModel model = (DefaultTableModel) jTableSearchMethodParams.getModel();
 		model.setRowCount(0);
@@ -1345,7 +1346,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		int returnVal = chooser.showOpenDialog(this);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			jTextFieldModelFile.setText(chooser.getSelectedFile().getPath());
-		}		
+		}
 	}
 	protected void actionSuggestParamRanges()
 	{
@@ -1353,16 +1354,16 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			jTextAreaParamSpecs.setText(bsearch.nlogolink.Utils.getDefaultConstraintsText(jTextFieldModelFile.getText()));
 		} catch (NetLogoLinkException e)
 		{
-			handleError(e.getMessage());			
+			handleError(e.getMessage());
 		}
 	}
-	
+
 	protected void actionRunNow() {
 		SearchProtocol protocol;
 		try {
 			protocol = createProtocolFromFormData();
 		} catch (UIConstraintException e) {
-			handleError("Error creating SearchProtocol: " + e.getMessage());			
+			handleError("Error creating SearchProtocol: " + e.getMessage());
 			return;
 		}
 
@@ -1378,7 +1379,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 				return;
 			}
 		} */
-		
+
 		if (runOptions == null)
 		{
 			runOptions = new BehaviorSearch.RunOptions();
@@ -1393,14 +1394,14 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			else
 			{
 				//TODO: Use folder where the NetLogo model is located instead?
-				runOptions.outputStem =  new File(defaultUserDocumentsFolder, "mySearchOutput").getPath();	
+				runOptions.outputStem =  new File(defaultUserDocumentsFolder, "mySearchOutput").getPath();
 			}
 		}
 		if (currentFile != null)
 		{
 			runOptions.protocolFilename = this.currentFile.getAbsolutePath();
 		}
-		
+
 		if (RunOptionsDialog.showDialog(this, runOptions))
 		{
 			GUIProgressDialog dialog = new GUIProgressDialog(this);
@@ -1408,8 +1409,8 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 			dialog.startSearchTask(protocol, runOptions);
 			dialog.setVisible(true);
 		}
-	}		
-	
+	}
+
 	private void actionHelpSearchMethod()
 	{
 		SearchMethod sm = searchMethodChoices.get(jComboBoxSearchMethodType.getSelectedItem());
@@ -1420,7 +1421,7 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		String chromosomeType = jComboBoxChromosomeType.getSelectedItem().toString();
 		try {
 			ChromosomeFactory factory = ChromosomeTypeLoader.createFromName(chromosomeType);
-			
+
 			HelpInfoDialog.showHelp(this, "Help about " + chromosomeType, factory.getHTMLHelpText() + "<BR><BR>");
 		} catch (BehaviorSearchException ex)
 		{
@@ -1428,35 +1429,36 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		}
 	}
 	private void actionHelpSearchSpace() {
-		HelpInfoDialog.showHelp(this, "Help about search space specification", "<HTML><BODY>" + 
+		HelpInfoDialog.showHelp(this, "Help about search space specification", "<HTML><BODY>" +
 				"Specifying the range of parameters to be searched works much the same as the BehaviorSpace tool in NetLogo:" +
 				"<PRE> [ \"PARAM_NAME\" VALUE1 VALUE2 VALUE3 ... ] </PRE>" +
 				"or <PRE> [ \"PARAM_NAME\" [RANGE_START INCREMENT RANGE_END] ] </PRE>" +
-				"<P>One slight difference is that INCREMENT may be \"C\", which means to search the range continously " + 
-				"(or at least with fine resolution, if the chromosomal representation doesn't allow for continuous parameters)</P>" + 
+				"<P>One slight difference is that INCREMENT may be \"C\", which means to search the range continously " +
+				"(or at least with fine resolution, if the chromosomal representation doesn't allow for continuous parameters)</P>" +
 				"</BODY></HTML>");
 	}
 	private void actionHelpEvaluation() {
 		//TODO: Better help docs
 		HelpInfoDialog.showHelp(this, "Help about fitness evaluation", "<HTML><BODY>" +
-				"An objective function must condense the data collected from multiple model runs into a single number, " 
+				"An objective function must condense the data collected from multiple model runs into a single number, "
 				+ "which is what the search process will either attempt to minimize or maximize." +
 				"</BODY></HTML>");
 	}
-	
+
 	private void actionHelpTutorial() {
-		org.nlogo.swing.BrowserLauncher.openURL(this, GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html"), true);
+		org.nlogo.swing.BrowserLauncher.openPath(this,
+      Paths.get(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html")), "");
 	}
 
 	private void actionHelpAbout() {
 		HelpAboutDialog.showAboutDialog(this);
 	}
 
-	
+
 	public class UIConstraintException extends Exception
 	{
 		private String title;
-		
+
 		public UIConstraintException(String msg, String title) {
 			super(msg);
 			this.title = title;
@@ -1465,9 +1467,9 @@ public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
 		{
 			return title;
 		}
-		private static final long serialVersionUID = 1L;		
+		private static final long serialVersionUID = 1L;
 	}
-		
-	
+
+
 	//$hide<<$
 }

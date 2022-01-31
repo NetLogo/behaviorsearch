@@ -2,7 +2,12 @@ name         := "behaviorsearch"
 organization := "bsearch"
 isSnapshot   := true
 
-resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
+val netLogoVersion = settingKey[String]("active version of NetLogo")
+
+netLogoVersion := "6.2.2"
+
+resolvers += "netlogo"         at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
+resolvers += "netlogoheadless" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
 val asmVers = "7.0"
 libraryDependencies ++= Seq(
@@ -49,3 +54,18 @@ fork in run  := true
 fork in Test := true
 
 crossPaths := false
+isSnapshot := true
+
+
+// Add JavaFX dependencies
+libraryDependencies ++= {
+  // Determine OS version of JavaFX binaries
+  lazy val osName = System.getProperty("os.name") match {
+    case n if n.startsWith("Linux") => "linux"
+    case n if n.startsWith("Mac") => "mac"
+    case n if n.startsWith("Windows") => "win"
+    case _ => throw new Exception("Unknown platform!")
+  }
+  Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+    .map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
+}

@@ -16,13 +16,13 @@ import javafx.util.StringConverter;
 import javafx.util.converter.DefaultStringConverter;
 
 /**
- * A class containing a {@link TableCell} implementation that draws a 
+ * A class containing a {@link TableCell} implementation that draws a
  * {@link TextField} node inside the cell. If the TextField is
  * left, the value is commited.
- * 
+ *
  * credit: http://stackoverflow.com/questions/23632884/how-to-commit-when-clicking-outside-an-editable-tableview-cell-in-javafx
  * @author Hans Huckebein
- * 
+ *
  */
 
 public class AcceptOnExitTableCell<S,T> extends TableCell<S,T> {
@@ -35,13 +35,13 @@ public class AcceptOnExitTableCell<S,T> extends TableCell<S,T> {
 
 /**
  * Provides a {@link TextField} that allows editing of the cell content when
- * the cell is double-clicked, or when 
- * {@link TableView#edit(int, javafx.scene.control.TableColumn)} is called. 
+ * the cell is double-clicked, or when
+ * {@link TableView#edit(int, javafx.scene.control.TableColumn)} is called.
  * This method will only  work on {@link TableColumn} instances which are of
  * type String.
- * 
- * @return A {@link Callback} that can be inserted into the 
- *      {@link TableColumn#cellFactoryProperty() cell factory property} of a 
+ *
+ * @return A {@link Callback} that can be inserted into the
+ *      {@link TableColumn#cellFactoryProperty() cell factory property} of a
  *      TableColumn, that enables textual editing of the content.
  */
 public static <S> Callback<TableColumn<S,String>, TableCell<S,String>> forTableColumn() {
@@ -50,18 +50,18 @@ public static <S> Callback<TableColumn<S,String>, TableCell<S,String>> forTableC
 
 /**
  * Provides a {@link TextField} that allows editing of the cell content when
- * the cell is double-clicked, or when 
- * {@link TableView#edit(int, javafx.scene.control.TableColumn) } is called. 
- * This method will work  on any {@link TableColumn} instance, regardless of 
- * its generic type. However, to enable this, a {@link StringConverter} must 
- * be provided that will convert the given String (from what the user typed 
- * in) into an instance of type T. This item will then be passed along to the 
+ * the cell is double-clicked, or when
+ * {@link TableView#edit(int, javafx.scene.control.TableColumn) } is called.
+ * This method will work  on any {@link TableColumn} instance, regardless of
+ * its generic type. However, to enable this, a {@link StringConverter} must
+ * be provided that will convert the given String (from what the user typed
+ * in) into an instance of type T. This item will then be passed along to the
  * {@link TableColumn#onEditCommitProperty()} callback.
- * 
- * @param converter A {@link StringConverter} that can convert the given String 
+ *
+ * @param converter A {@link StringConverter} that can convert the given String
  *      (from what the user typed in) into an instance of type T.
- * @return A {@link Callback} that can be inserted into the 
- *      {@link TableColumn#cellFactoryProperty() cell factory property} of a 
+ * @return A {@link Callback} that can be inserted into the
+ *      {@link TableColumn#cellFactoryProperty() cell factory property} of a
  *      TableColumn, that enables textual editing of the content.
  */
 public static <S,T> Callback<TableColumn<S,T>, TableCell<S,T>> forTableColumn(
@@ -74,7 +74,7 @@ public static <S,T> Callback<TableColumn<S,T>, TableCell<S,T>> forTableColumn(
  *                                                                         *
  * Fields                                                                  *
  *                                                                         *
- **************************************************************************/    
+ **************************************************************************/
 
 private TextField textField;
 private boolean escapePressed=false;
@@ -88,27 +88,27 @@ private TablePosition<S, ?> tablePos=null;
  **************************************************************************/
 
 /**
- * Creates a default TextFieldTableCell with a null converter. Without a 
+ * Creates a default TextFieldTableCell with a null converter. Without a
  * {@link StringConverter} specified, this cell will not be able to accept
  * input from the TextField (as it will not know how to convert this back
  * to the domain object). It is therefore strongly encouraged to not use
  * this constructor unless you intend to set the converter separately.
  */
-public AcceptOnExitTableCell() { 
+public AcceptOnExitTableCell() {
     this(null);
-} 
+}
 
 /**
- * Creates a TextFieldTableCell that provides a {@link TextField} when put 
- * into editing mode that allows editing of the cell content. This method 
- * will work on any TableColumn instance, regardless of its generic type. 
- * However, to enable this, a {@link StringConverter} must be provided that 
- * will convert the given String (from what the user typed in) into an 
- * instance of type T. This item will then be passed along to the 
+ * Creates a TextFieldTableCell that provides a {@link TextField} when put
+ * into editing mode that allows editing of the cell content. This method
+ * will work on any TableColumn instance, regardless of its generic type.
+ * However, to enable this, a {@link StringConverter} must be provided that
+ * will convert the given String (from what the user typed in) into an
+ * instance of type T. This item will then be passed along to the
  * {@link TableColumn#onEditCommitProperty()} callback.
- * 
- * @param converter A {@link StringConverter converter} that can convert 
- *      the given String (from what the user typed in) into an instance of 
+ *
+ * @param converter A {@link StringConverter converter} that can convert
+ *      the given String (from what the user typed in) into an instance of
  *      type T.
  */
 public AcceptOnExitTableCell(StringConverter<T> converter) {
@@ -125,29 +125,29 @@ public AcceptOnExitTableCell(StringConverter<T> converter) {
  **************************************************************************/
 
 // --- converter
-private ObjectProperty<StringConverter<T>> converter = 
+private ObjectProperty<StringConverter<T>> converter =
         new SimpleObjectProperty<StringConverter<T>>(this, "converter");
 
 /**
  * The {@link StringConverter} property.
  */
-public final ObjectProperty<StringConverter<T>> converterProperty() { 
-    return converter; 
+public final ObjectProperty<StringConverter<T>> converterProperty() {
+    return converter;
 }
 
-/** 
+/**
  * Sets the {@link StringConverter} to be used in this cell.
  */
-public final void setConverter(StringConverter<T> value) { 
-    converterProperty().set(value); 
+public final void setConverter(StringConverter<T> value) {
+    converterProperty().set(value);
 }
 
 /**
  * Returns the {@link StringConverter} used in this cell.
  */
-public final StringConverter<T> getConverter() { 
-    return converterProperty().get(); 
-}  
+public final StringConverter<T> getConverter() {
+    return converterProperty().get();
+}
 
 
 
@@ -159,8 +159,8 @@ public final StringConverter<T> getConverter() {
 
 /** {@inheritDoc} */
 @Override public void startEdit() {
-    if (! isEditable() 
-            || ! getTableView().isEditable() 
+    if (! isEditable()
+            || ! getTableView().isEditable()
             || ! getTableColumn().isEditable()) {
         return;
     }
@@ -168,7 +168,7 @@ public final StringConverter<T> getConverter() {
 
     if (isEditing()) {
         if (textField == null) {
-            textField = getTextField(); 
+            textField = getTextField();
         }
         escapePressed=false;
         startEdit(textField);
@@ -179,13 +179,14 @@ public final StringConverter<T> getConverter() {
 
 /** {@inheritDoc} */
 @Override public void commitEdit(T newValue) {
-    if (! isEditing()) 
+    if (! isEditing())
         return;
 
     final TableView<S> table = getTableView();
     if (table != null) {
+       @SuppressWarnings("unchecked")
         // Inform the TableView of the edit being ready to be committed.
-        CellEditEvent editEvent = new CellEditEvent(
+        CellEditEvent<S,T> editEvent = new CellEditEvent(
             table,
             tablePos,
             TableColumn.editCommitEvent(),
@@ -260,13 +261,13 @@ private TextField getTextField() {
                             + "in your cell factory.");
         }
         this.commitEdit(getConverter().fromString(textField.getText()));
-        
+
         event.consume();
     });
     textField.setOnKeyPressed(t -> { if (t.getCode() == KeyCode.ESCAPE) escapePressed = true; else escapePressed = false; });
     textField.setOnKeyReleased(t -> {
         if (t.getCode() == KeyCode.ESCAPE) {
-            // djw the code may depend on java version / expose incompatibilities: 
+            // djw the code may depend on java version / expose incompatibilities:
             throw new IllegalArgumentException("did not expect esc key releases here.");
         }
     });
@@ -289,7 +290,7 @@ private void updateItem() {
                 textField.setText(getItemText());
             }
             setText(null);
-            setGraphic(textField);      
+            setGraphic(textField);
         } else {
             setText(getItemText());
             setGraphic(null);

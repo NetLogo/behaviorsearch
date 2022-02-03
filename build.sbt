@@ -4,7 +4,7 @@ isSnapshot   := true
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.2.2"
+netLogoVersion = "6.2.0-d27b502"
 
 resolvers += "netlogo"         at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 resolvers += "netlogoheadless" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"

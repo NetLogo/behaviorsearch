@@ -4,7 +4,7 @@ isSnapshot   := true
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.2.0-d27b502"
+netLogoVersion := "6.2.2"
 
 resolvers += "netlogo"         at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 resolvers += "netlogoheadless" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
@@ -58,6 +58,7 @@ isSnapshot := true
 
 
 // Add JavaFX dependencies
+val javaFXVersion = "17.0.1"
 libraryDependencies ++= {
   // Determine OS version of JavaFX binaries
   lazy val osName = System.getProperty("os.name") match {
@@ -67,5 +68,5 @@ libraryDependencies ++= {
     case _ => throw new Exception("Unknown platform!")
   }
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
+    .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName)
 }

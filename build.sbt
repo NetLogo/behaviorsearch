@@ -58,7 +58,7 @@ isSnapshot := true
 
 
 // Add JavaFX dependencies
-val javaFXVersion = "17.0.1"
+val javaFXVersion = "16"
 libraryDependencies ++= {
   // Determine OS version of JavaFX binaries
   lazy val osName = System.getProperty("os.name") match {

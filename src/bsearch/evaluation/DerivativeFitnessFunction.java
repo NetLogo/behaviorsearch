@@ -17,7 +17,7 @@ import bsearch.representations.DummyChromosome;
 /**
  * This class is a work-in-progress.  Currently unused...
  */
-public strictfp class DerivativeFitnessFunction implements FitnessFunction
+public class DerivativeFitnessFunction implements FitnessFunction
 {
 	private final SearchProtocol protocol;
 	private final String paramName;

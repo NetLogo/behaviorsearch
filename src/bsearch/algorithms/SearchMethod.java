@@ -11,7 +11,7 @@ import bsearch.nlogolink.NetLogoLinkException;
 import bsearch.representations.ChromosomeFactory;
 import bsearch.space.SearchSpace;
 
-public strictfp interface SearchMethod
+public interface SearchMethod
 {
 	/**
 	 * @param searchMethodParams a map of all the search parameter names to the values 

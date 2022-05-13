@@ -3,7 +3,7 @@ package bsearch.space;
 import org.nlogo.api.MersenneTwisterFast;
 
 /** characterizes a parameter that has a continuous (floating point) range on the interval [A,B) */
-public strictfp class DoubleContinuousSpec extends ParameterSpec {
+public class DoubleContinuousSpec extends ParameterSpec {
 	private double dMin;
 	private double dMax;
 	

@@ -6,7 +6,7 @@ import bsearch.app.BehaviorSearchException;
 import bsearch.representations.Chromosome;
 
 
-public strictfp interface FitnessFunction
+public interface FitnessFunction
 {
 
 	/** Given a point in the search space, and a requested number of repetitions for that point, return a mapping which

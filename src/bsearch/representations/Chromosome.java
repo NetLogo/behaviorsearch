@@ -16,7 +16,7 @@ import bsearch.space.SearchSpace;
  * Also all Chromosome implementations should be immutable (from an outside perspective).
  * 
  */
-public strictfp interface Chromosome extends Cloneable
+public interface Chromosome extends Cloneable
 {
 
 	/**

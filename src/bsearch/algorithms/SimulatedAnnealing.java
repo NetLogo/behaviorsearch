@@ -12,7 +12,7 @@ import bsearch.representations.Chromosome;
 import bsearch.representations.ChromosomeFactory;
 import bsearch.space.SearchSpace;
 
-public strictfp class SimulatedAnnealing extends AbstractSearchMethod {
+public class SimulatedAnnealing extends AbstractSearchMethod {
 	double mutationRate = 0.05;
 	int restartAfterStallCount = 0;
 	double initialTemperature = 1.0; 

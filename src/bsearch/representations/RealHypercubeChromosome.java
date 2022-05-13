@@ -14,7 +14,7 @@ import bsearch.space.SearchSpace;
  * A Chromosomal representation where each parameter is represented by a real number on the interval [0,1),
  * regardless of whether the parameter only takes on a discrete set of values, or is in an entirely different range. 
  */
-public strictfp class RealHypercubeChromosome implements Chromosome
+public class RealHypercubeChromosome implements Chromosome
 {
     private double[] dVals;
     private SearchSpace searchSpace;    

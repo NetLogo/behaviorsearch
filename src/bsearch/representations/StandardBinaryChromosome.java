@@ -9,7 +9,7 @@ import bsearch.space.SearchSpace;
 /**
  * A Chromosomal representation that uses standard ordering of bits to encode integer (and discretized continuous) values 
  */
-public strictfp class StandardBinaryChromosome extends BinaryChromosome
+public class StandardBinaryChromosome extends BinaryChromosome
 {
 	public StandardBinaryChromosome( SearchSpace searchSpace , MersenneTwisterFast rng )
 	{

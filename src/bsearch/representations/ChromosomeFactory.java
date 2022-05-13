@@ -6,7 +6,7 @@ import org.nlogo.api.MersenneTwisterFast;
 
 import bsearch.space.SearchSpace;
 
-public strictfp interface ChromosomeFactory {
+public interface ChromosomeFactory {
 
 	public abstract Chromosome createChromosome(SearchSpace searchSpace , MersenneTwisterFast rng);
 	public abstract Chromosome createChromosome( SearchSpace searchSpace, LinkedHashMap<String,Object> paramSettings);

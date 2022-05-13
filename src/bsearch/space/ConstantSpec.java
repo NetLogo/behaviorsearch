@@ -4,7 +4,7 @@ import org.nlogo.api.MersenneTwisterFast;
 
 /** For any parameter that is fixed for the search.
  */
-public strictfp class ConstantSpec extends ParameterSpec {
+public class ConstantSpec extends ParameterSpec {
 	private Object obj;
 	
 	public ConstantSpec(String name, Object obj) {

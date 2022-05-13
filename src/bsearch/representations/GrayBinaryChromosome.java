@@ -9,7 +9,7 @@ import bsearch.space.SearchSpace;
 /**
  * A Chromosomal representation that uses Gray code for integers
  */
-public strictfp class GrayBinaryChromosome extends BinaryChromosome
+public class GrayBinaryChromosome extends BinaryChromosome
 {
 	public GrayBinaryChromosome( SearchSpace searchSpace , MersenneTwisterFast rng )
 	{

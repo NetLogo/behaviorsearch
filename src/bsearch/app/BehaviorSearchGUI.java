@@ -74,7 +74,7 @@ import java.awt.FlowLayout;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public strictfp class BehaviorSearchGUI extends javax.swing.JFrame {
+public class BehaviorSearchGUI extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 

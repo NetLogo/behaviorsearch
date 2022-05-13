@@ -7,7 +7,7 @@ import org.nlogo.api.MersenneTwisterFast;
  *  Note: the Objects need to be types that NetLogo understands
  *   (e.g. Double, String, LogoList, Boolean...) 
  */
-public strictfp abstract class ParameterSpec {
+public abstract class ParameterSpec {
 	String name;
 	
 	public ParameterSpec(String name)

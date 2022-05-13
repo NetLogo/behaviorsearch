@@ -13,7 +13,7 @@ import bsearch.representations.ChromosomeFactory;
 import bsearch.space.SearchSpace;
 
 @Deprecated
-public strictfp class GenerationalGA extends AbstractSearchMethod{
+public class GenerationalGA extends AbstractSearchMethod{
 	
 	private double mutationRate = 0.01;
 	private double crossoverRate = 0.7;

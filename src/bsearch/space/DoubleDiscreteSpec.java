@@ -2,7 +2,7 @@ package bsearch.space;
 
 import org.nlogo.api.MersenneTwisterFast;
 
-public strictfp class DoubleDiscreteSpec extends ParameterSpec {
+public class DoubleDiscreteSpec extends ParameterSpec {
 	private double dMin;
 	private double dStep;
 	private double dMax;

@@ -9,7 +9,7 @@ import bsearch.nlogolink.ModelRunResult;
 import bsearch.representations.Chromosome;
 
 
-public strictfp class StandardFitnessFunction implements FitnessFunction
+public class StandardFitnessFunction implements FitnessFunction
 {
 	private final SearchProtocol protocol;
 	

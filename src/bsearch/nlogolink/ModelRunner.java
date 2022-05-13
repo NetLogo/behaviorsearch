@@ -15,7 +15,7 @@ import org.nlogo.nvm.Procedure;
 import org.nlogo.api.MersenneTwisterFast;
 import org.nlogo.headless.HeadlessWorkspace;
 
-public strictfp class ModelRunner {
+public class ModelRunner {
 
 	private HeadlessWorkspace workspace;
 

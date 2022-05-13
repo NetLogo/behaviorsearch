@@ -35,7 +35,7 @@ import bsearch.util.GeneralUtils;
  *  TODO: Eventually handle setting world-dimensions? and random-seed? (prob. not needed)
  *
  */
-public strictfp class BehaviorSearch {
+public class BehaviorSearch {
 
 	public static void runMultipleSearches(SearchProtocol protocol, int numSearches, int firstSearchNumber, String fnameStem, List<ResultListener> listeners, int numThreads, int firstRandomSeed) throws BehaviorSearchException, InterruptedException, SearchParameterException
 	{

@@ -13,7 +13,7 @@ import bsearch.representations.Chromosome;
 import bsearch.representations.ChromosomeFactory;
 import bsearch.space.SearchSpace;
 
-public strictfp class StandardGA extends AbstractSearchMethod{
+public class StandardGA extends AbstractSearchMethod{
 	
 	private double mutationRate = 0.01;
 	private double crossoverRate = 0.7;

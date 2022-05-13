@@ -40,7 +40,7 @@ import bsearch.representations.StandardBinaryChromosome;
 import bsearch.space.SearchSpace;
 import bsearch.util.GeneralUtils;
 
-public strictfp class BehaviorSearchTest
+public class BehaviorSearchTest
 {
   public static final String DEFAULT_MODEL_PATH = "../models/Sample Models/";
 

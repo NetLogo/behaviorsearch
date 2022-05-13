@@ -13,7 +13,7 @@ import bsearch.space.SearchSpace;
  * (or potentially outside the bounds/resolution of the search space)
  * so it can be evaluated using the existing BatchModel running infrastructure.
  */
-public strictfp class DummyChromosome implements Chromosome
+public class DummyChromosome implements Chromosome
 {
 	SearchSpace searchSpace;
 	LinkedHashMap<String,Object> paramSettings;

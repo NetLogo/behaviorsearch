@@ -3,7 +3,7 @@ package bsearch.algorithms;
 import java.util.HashMap;
 
 
-public strictfp class MutationHillClimber extends SimulatedAnnealing {
+public class MutationHillClimber extends SimulatedAnnealing {
 
 	public MutationHillClimber()
 	{

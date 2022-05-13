@@ -5,7 +5,7 @@ import java.util.List;
 
 
 
-public strictfp class SearchSpace {
+public class SearchSpace {
 	private final ArrayList<ParameterSpec> paramSpecs;
 
 	public SearchSpace(List<String> paramSpecStrings)

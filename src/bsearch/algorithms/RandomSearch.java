@@ -12,7 +12,7 @@ import bsearch.representations.Chromosome;
 import bsearch.representations.ChromosomeFactory;
 import bsearch.space.SearchSpace;
 
-public strictfp class RandomSearch extends AbstractSearchMethod {
+public class RandomSearch extends AbstractSearchMethod {
 	
 	public RandomSearch()
 	{

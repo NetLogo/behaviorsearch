@@ -14,7 +14,7 @@ import bsearch.space.SearchSpace;
  *   The chromosome is not made up solely of bits, but instead of various mixed types (numbers, objects), as defined by each
  *   ParameterSpec, and the way mutation is performed at a locus of the Chromosome is ParameterSpec specific.  
  */
-public strictfp class MixedTypeChromosome implements Chromosome
+public class MixedTypeChromosome implements Chromosome
 {
     private Object[] paramVals;
     private SearchSpace searchSpace;    

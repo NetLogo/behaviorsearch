@@ -40,7 +40,7 @@ import bsearch.util.GeneralUtils;
 
 
 
-public strictfp class SearchProtocol
+public class SearchProtocol
 {
 	//TODO: Add a "documentation" field to store text/comments about the search protocol.
 	public final double bsearchVersionNumber;

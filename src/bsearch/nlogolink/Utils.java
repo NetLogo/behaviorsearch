@@ -10,7 +10,7 @@ import org.nlogo.api.LogoException;
 import org.nlogo.core.CompilerException;
 import org.nlogo.headless.HeadlessWorkspace;
 
-public strictfp class Utils {
+public class Utils {
 	public static final long MIN_EXACT_NETLOGO_INT = -9007199254740992L;
 	public static final long MAX_EXACT_NETLOGO_INT = 9007199254740992L;
 

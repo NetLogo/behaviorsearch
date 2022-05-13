@@ -9,7 +9,7 @@ import org.nlogo.api.MersenneTwisterFast;
 
 /** For any parameter that is fixed for the search.
  */
-public strictfp class CategoricalSpec extends ParameterSpec {
+public class CategoricalSpec extends ParameterSpec {
 	private List<Object> choices;
 	
 	public CategoricalSpec(String name, List<Object> choices) {

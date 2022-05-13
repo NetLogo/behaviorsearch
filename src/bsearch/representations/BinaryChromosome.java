@@ -12,7 +12,7 @@ import bsearch.space.SearchSpace;
 /**
  * A Chromosomal representation that uses Gray code for integers
  */
-public abstract strictfp class BinaryChromosome implements Chromosome
+public abstract class BinaryChromosome implements Chromosome
 {
 	public static final int NUM_BITS_FOR_CONTINUOUS_PARAMETERS = 16; // discretized to 65,536 choices
     protected final boolean[] bitstring;

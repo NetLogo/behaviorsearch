@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -252,7 +252,7 @@ public class BehaviorSearchTest
 	@Test
 	public void testConsistentOutputResults() throws IOException , SAXException, SearchParameterException, BehaviorSearchException, InterruptedException, CmdLineException
 	{
-    Path tmpDirectory = Paths.get("test/tmp");
+    Path tmpDirectory = Path.of("test/tmp");
     Files.createDirectories(tmpDirectory);
 		LinkedHashMap<String,String> scenarios = new LinkedHashMap<String,String>();
 		scenarios.put("TesterSuperRandom","-p test/TesterSuperRandom.bsearch -o test/tmp/TesterSuperRandom -t 7 -n 2 --randomseed 123 --quiet");

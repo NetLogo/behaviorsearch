@@ -15,7 +15,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
@@ -1447,7 +1447,7 @@ public class BehaviorSearchGUI extends javax.swing.JFrame {
 
 	private void actionHelpTutorial() {
 		org.nlogo.swing.BrowserLauncher.openPath(this,
-      Paths.get(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html")), "");
+      Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html")), "");
 	}
 
 	private void actionHelpAbout() {

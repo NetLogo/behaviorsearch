@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -288,7 +288,7 @@ public class MainController implements Initializable {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-					BrowserLauncher.openPath(Paths.get(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html")), "");
+					BrowserLauncher.openPath(Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html")), "");
 			}
 		});
 	}

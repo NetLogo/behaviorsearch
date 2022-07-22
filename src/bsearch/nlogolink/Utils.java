@@ -33,6 +33,7 @@ public strictfp class Utils {
 
 	public static HeadlessWorkspace createWorkspace()
 	{
+		System.setProperty("org.nlogo.preferHeadless", "true");
 		HeadlessWorkspace workspace = HeadlessWorkspace.newInstance();
 		return workspace;
 	}

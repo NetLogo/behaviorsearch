@@ -4,6 +4,7 @@ isSnapshot   := true
 
 resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
+val asmVers = "7.0"
 libraryDependencies ++= Seq(
   "jfree"              % "jfreechart"      % "1.0.13"
 , "jfree"              % "jcommon"         % "1.0.16"

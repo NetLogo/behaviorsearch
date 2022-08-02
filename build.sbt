@@ -4,12 +4,10 @@ isSnapshot   := true
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.2.2-2f651c5"
+netLogoVersion := "6.2.2"
 
-resolvers += "netlogo"         at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
-resolvers += "netlogoheadless" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
+resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
-val asmVers = "7.0"
 libraryDependencies ++= Seq(
   "jfree"              % "jfreechart"      % "1.0.13"
 , "jfree"              % "jcommon"         % "1.0.16"
@@ -33,7 +31,7 @@ artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
   artifact.name + "." + artifact.extension
 }
 
-Compile / javacOptions      ++= List("-g", "-deprecation", "-target", "1.8", "-source", "1.8")
+Compile / javacOptions      ++= List("-g", "-deprecation", "--release", "11")
 Compile / javaSource         := baseDirectory.value / "src"
 Compile / resourceDirectory  := baseDirectory.value / "src"
 
@@ -43,19 +41,18 @@ Compile / unmanagedJars += Attributed.blank(file(System.getenv("JAVA_HOME") + "/
 unmanagedResources / includeFilter := "*.fxml"
 unmanagedSources   / excludeFilter := "*test*"
 
-Test / javacOptions ++= List("-g", "-deprecation", "-target", "1.8", "-source", "1.8")
+Test / javacOptions ++= List("-g", "-deprecation", "--release", "11")
 Test / javaSource    := baseDirectory.value / "src"
 Test / testOptions   := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
 
 Test / unmanagedSources / excludeFilter := HiddenFileFilter
 Test / unmanagedSources / includeFilter := "*Test.java"
 
-fork in run  := true
-fork in Test := true
+run / fork := true
+Test / fork := true
 
 crossPaths := false
 isSnapshot := true
-
 
 // Add JavaFX dependencies
 val javaFXVersion = "16"

@@ -4,7 +4,7 @@ isSnapshot   := true
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.2.2"
+netLogoVersion := "6.3.0"
 
 resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
@@ -13,15 +13,15 @@ libraryDependencies ++= Seq(
 , "jfree"              % "jcommon"         % "1.0.16"
 , "args4j"             % "args4j"          % "2.0.12"
 , "com.novocode"       % "junit-interface" % "0.11" % "test"
-, "org.jogamp.jogl"    %  "jogl-all"       % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0-rc-20210111/jar/jogl-all.jar"
-, "org.jogamp.gluegen" %  "gluegen-rt"     % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0-rc-20210111/jar/gluegen-rt.jar"
+, "org.jogamp.jogl"    %  "jogl-all"       % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/jogl-all.jar"
+, "org.jogamp.gluegen" %  "gluegen-rt"     % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/gluegen-rt.jar"
 )
 
 libraryDependencies ++= {
   if (description.value.contains("subproject of NetLogo"))
     Seq()
   else
-    Seq("org.nlogo" % "netlogo" % "6.2.2"
+    Seq("org.nlogo" % "netlogo" % netLogoVersion.value
       exclude("org.jogamp.jogl",    "jogl-all")
       exclude("org.jogamp.gluegen", "gluegen-rt")
     )

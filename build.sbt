@@ -4,8 +4,7 @@ isSnapshot   := true
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.3.0"
-
+netLogoVersion := "6.4.0"
 resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
 libraryDependencies ++= Seq(

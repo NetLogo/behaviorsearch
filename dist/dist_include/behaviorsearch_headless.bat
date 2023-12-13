@@ -12,12 +12,12 @@ REM get rid of the trailing backslash, which causes problems...
 set BSEARCH_DIR=%BSEARCH_DIR:~0,-1%
 cd %BSEARCH_DIR%
 
-REM Because of some restrictions in NetLogo (e.g. finding language extensions), 
-REM BehaviorSearch needs to be started from the NetLogo application folder, 
+REM Because of some restrictions in NetLogo (e.g. finding language extensions),
+REM BehaviorSearch needs to be started from the NetLogo application folder,
 REM and "behaviorsearch" must be installed as a subfolder of the NetLogo folder.)
 REM go up a level, to get to the NetLogo folder.
 cd ..
-set LIBRARY_DIR=%cd%
+set LIBRARY_DIR=%cd%\app
 
 REM gather the classpath composed of all jars
 set JARS=
@@ -37,5 +37,3 @@ set BSEARCH_MAXMEM=768m
 REM This script assumes that you have the JAVA_HOME environment variable set.
 REM If you don't, and don't want to set it, simply change the path below.
 "%JAVA_HOME%\bin\java.exe" -Dbsearch.startupfolder="%WD%" -Dbsearch.appfolder="%BSEARCH_DIR%" -Xms256m -XX:+UseParallelGC "-Xmx%BSEARCH_MAXMEM%" -classpath "%JARS%" bsearch.app.BehaviorSearch %*
-
-

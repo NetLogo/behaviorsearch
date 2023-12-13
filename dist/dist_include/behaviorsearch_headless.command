@@ -8,16 +8,16 @@ BSEARCH_DIR="`dirname "$0"`" # the copious quoting is for handling paths with sp
 cd "$BSEARCH_DIR"
 BSEARCH_DIR="`pwd`"  #in case it's a relative path, like "."
 cd ..
-LIBRARY_DIR="`pwd`/Java"  #in case it's a relative path, like "."
+LIBRARY_DIR="`pwd`/app"  #in case it's a relative path, like "."
 JARS=""
 for f in `ls -1 "$LIBRARY_DIR" | grep "jar"`; do
   JARS="$LIBRARY_DIR/$f:$JARS"
 done
 
-# If you want to use a different version of java, or if "java" is not in your PATH, 
-# you can run this script with the BSEARCH_JAVA environment variable pointing 
+# If you want to use a different version of java, or if "java" is not in your PATH,
+# you can run this script with the BSEARCH_JAVA environment variable pointing
 # to the java executable you want to use. e.g. "/opt/java6/bin/java"
-if [ -z "$BSEARCH_JAVA" ]; then 
+if [ -z "$BSEARCH_JAVA" ]; then
 	BSEARCH_JAVA="java"
 fi
 

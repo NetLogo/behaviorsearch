@@ -43,7 +43,7 @@ public class BehaviorSearch {
 
     	for (ResultListener listener : listeners) {
 			listener.initListener(space);
-		} 
+		}
 
     	for (int searchNumber = firstSearchNumber; searchNumber < numSearches + firstSearchNumber; searchNumber++)
     	{
@@ -53,20 +53,20 @@ public class BehaviorSearch {
 
     	for (ResultListener listener : listeners) {
 			listener.allSearchesFinished();
-		}      		
+		}
 
-		
+
 	}
-	
+
 	public static SearchManager runProtocol(SearchProtocol protocol, SearchSpace space, int searchIDNumber, int numEvaluationThreads,  MersenneTwisterFast rng, List<ResultListener> listeners) throws SearchParameterException, BehaviorSearchException,  InterruptedException
 	{
 		boolean measureEveryTick = !protocol.fitnessCollecting.equals(SearchProtocol.FITNESS_COLLECTING.AT_FINAL_STEP);
 		ModelRunner.Factory mrunnerFactory = new ModelRunner.Factory(
-				GeneralUtils.attemptResolvePathFromProtocolFolder(protocol.modelFile), measureEveryTick, 
-				protocol.modelStepLimit, protocol.modelSetupCommands, protocol.modelStepCommands, 
+				GeneralUtils.attemptResolvePathFromProtocolFolder(protocol.modelFile), measureEveryTick,
+				protocol.modelStepLimit, protocol.modelSetupCommands, protocol.modelStepCommands,
 				protocol.modelStopCondition, protocol.modelMetricReporter, protocol.modelMeasureIf);
     	BatchRunner batchRunner = new BatchRunner(numEvaluationThreads, mrunnerFactory);
-    	
+
         SearchMethod searcher = SearchMethodLoader.createFromName(protocol.searchMethodType);
 
         //if the search method in the protocol is missing some parameters, fill them in with defaults
@@ -77,7 +77,7 @@ public class BehaviorSearch {
         	{
         		protocol.searchMethodParams.put(key, defaultParams.get(key));
         	}
-        }        
+        }
 		searcher.setSearchParams(protocol.searchMethodParams);
 
 		FitnessFunction ffun;
@@ -97,22 +97,22 @@ public class BehaviorSearch {
 		}
 
 		SearchManager archive = new SearchManager(searchIDNumber, batchRunner, protocol, ffun, false, 0.0);
-		
+
 		for (ResultListener listener: listeners)
 		{
 			archive.addResultsListener(listener);
 		}
-        	
+
 
 		ChromosomeFactory cFactory = ChromosomeTypeLoader.createFromName(protocol.chromosomeType);
 		try {
         	for (ResultListener listener : listeners) {
     			listener.searchStarting(archive);
-    		} 
-			searcher.search( space , cFactory, protocol, archive, rng );			
+    		}
+			searcher.search( space , cFactory, protocol, archive, rng );
 	    	for (ResultListener listener : listeners) {
 				listener.searchFinished(archive);
-			} 
+			}
 		}
 		catch (NetLogoLinkException ex)
 		{
@@ -126,19 +126,19 @@ public class BehaviorSearch {
 				e.printStackTrace();
 			}
 		}
-	
+
 		return archive;
 	}
-	
+
 
 
 	public static class RunOptions implements Cloneable {
 		@Option(name="-p",aliases={"--protocol"},required=true,usage="file (.bsearch) from which to load the search experiment protocol.")
 		public String protocolFilename;
-		
+
 		@Option(name="-o",aliases={"--output"},required=true,usage="output filename STEM: will create files named STEM.xxxx.csv")
 		public String outputStem;
-		
+
 		@Option(name="-t",aliases={"--threads"},usage="number of simultaneous threads to run the search with (defaults to the number of processors available).")
 		public int numThreads = Runtime.getRuntime().availableProcessors();
 
@@ -147,17 +147,17 @@ public class BehaviorSearch {
 
 		@Option(name="-f",aliases={"--firstsearchnum"},usage="searches will be numbered starting at this index (only affects search # column in the output data)")
 		public int firstSearchNumber = 1;
-				
+
 		@Option(name="-r",aliases={"--randomseed"},usage="random seed to start the first search (additional searches will be seeded with following consecutive numbers)")
 		// if none specified, choose a random integer to start with.
-		public Integer randomSeed = (Integer) new MersenneTwisterFast().nextInt();  
+		public Integer randomSeed = (Integer) new MersenneTwisterFast().nextInt();
 
 		@Option(name="-q",aliases={"--quiet"},usage="suppress printing progress to stdout")
 		boolean quiet = false;
-		
+
 		//TODO: Decide if --shorten option is even worthwhile... sort of doubtful, since in the most general case, each
 		// fitness evaluation may take an arbitrary number of model runs, meaning that whatever shorten factor you use,
-		// you can't guarantee it'll work out nicely to get every Nth one - you might just get some of the Nth ones.  
+		// you can't guarantee it'll work out nicely to get every Nth one - you might just get some of the Nth ones.
 		// ~Forrest (12/23/2009)
 		@Option(name="--shorten",usage="only print information to the .objectiveFunctionHistory.csv after every Nth model run.")
 		int shortenOutputFactor = 1;
@@ -182,10 +182,10 @@ public class BehaviorSearch {
 
 		//@Argument(usage="any number of arguments...")
 		//List<String> arguments;
-		
+
 		@Override
 		public RunOptions clone()
-		{		
+		{
 			try {
 				return (RunOptions) super.clone();
 			} catch (CloneNotSupportedException e) {
@@ -193,14 +193,14 @@ public class BehaviorSearch {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		RunOptions runOptions = new RunOptions();
 		CmdLineParser parser = new CmdLineParser(runOptions);
-		
+
 		try {
 			parser.parseArgument(args);
-			
+
 		} catch( CmdLineException e ) {
 			if (runOptions.printVersion)
 			{
@@ -214,10 +214,10 @@ public class BehaviorSearch {
 			else {
 				System.err.println(e.getMessage());
 			}
-			String scriptName = "behaviorsearch.sh";
+			String scriptName = "behaviorsearch_headless.sh";
 			if (GeneralUtils.isOSWindows())
 			{
-				scriptName = "behaviorsearch.bat";
+				scriptName = "behaviorsearch_headless.bat";
 			}
 			System.err.println(scriptName + " [options...] arguments...");
 			parser.printUsage(System.err);
@@ -240,16 +240,16 @@ public class BehaviorSearch {
 			}
         }
 	}
-	
+
 	public static void runWithOptions(RunOptions runOptions) throws IOException, SAXException, BehaviorSearchException, InterruptedException, SearchParameterException
 	{
 		runWithOptions(runOptions,null,null);
 	}
 	/**
-	 * Runs BehaviorSearch with the specified options (command line options, or could be specified through the GUI) 
-	 * @param runOptions - Options for running BehaviorSearch  
+	 * Runs BehaviorSearch with the specified options (command line options, or could be specified through the GUI)
+	 * @param runOptions - Options for running BehaviorSearch
 	 * @param protocol - SearchProtocol to use for the search.  If null, then load the protocol from runOptions.protocolFilename.
-	 * @param additionalListeners - a list of additional listeners that should receive events relating to the search progress.   
+	 * @param additionalListeners - a list of additional listeners that should receive events relating to the search progress.
 	 * @throws IOException
 	 * @throws SAXException
 	 * @throws BehaviorSearchException
@@ -266,13 +266,13 @@ public class BehaviorSearch {
 			protocol = SearchProtocol.loadFile(runOptions.protocolFilename);
 		}
 		GeneralUtils.updateProtocolFolder(runOptions.protocolFilename);
-        
+
 		// allow users to override parameter spec ranges from the command line...
 		for (String override : runOptions.overrideParameters)
 		{
 			ParameterSpec newSpec = ParameterSpec.fromString(override);
 			boolean foundReplacement = false;
-			
+
 			for (int i = 0; i < protocol.paramSpecStrings.size(); i++) {
 				ParameterSpec spec = ParameterSpec.fromString(protocol.paramSpecStrings.get(i));
 				if (spec.getParameterName().equals(newSpec.getParameterName())) {
@@ -285,7 +285,7 @@ public class BehaviorSearch {
 				protocol.paramSpecStrings.add(override);
 			}
 		}
-	
+
     	if (runOptions.briefOutput)
     	{
     		runOptions.suppressModelRunHistory = true;
@@ -304,9 +304,9 @@ public class BehaviorSearch {
     		listeners.addAll(additionalListeners);
     	}
 
-    	BehaviorSearch.runMultipleSearches(protocol, runOptions.numSearches, runOptions.firstSearchNumber, 
+    	BehaviorSearch.runMultipleSearches(protocol, runOptions.numSearches, runOptions.firstSearchNumber,
     			runOptions.outputStem,
     			listeners, runOptions.numThreads, runOptions.randomSeed );
-		
+
 	}
 }

@@ -35,9 +35,6 @@ Compile / javacOptions      ++= List("-g", "-deprecation", "--release", "11")
 Compile / javaSource         := baseDirectory.value / "src"
 Compile / resourceDirectory  := baseDirectory.value / "src"
 
-Compile / unmanagedJars += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/ext/jfxrt.jar"))
-  .put(AttributeKey[Boolean]("jdkLibrary"), true)
-
 unmanagedResources / includeFilter := "*.fxml"
 unmanagedSources   / excludeFilter := "*test*"
 
@@ -55,15 +52,15 @@ crossPaths := false
 isSnapshot := true
 
 // Add JavaFX dependencies
-val javaFXVersion = "16"
 libraryDependencies ++= {
   // Determine OS version of JavaFX binaries
-  lazy val osName = System.getProperty("os.name") match {
-    case n if n.startsWith("Linux") => "linux"
-    case n if n.startsWith("Mac") => "mac"
-    case n if n.startsWith("Windows") => "win"
+  lazy val osName = (System.getProperty("os.name"), System.getProperty("os.arch")) match {
+    case (n, _) if n.startsWith("Linux") => "linux"
+    case (n, arch) if n.startsWith("Mac") && arch == "aarch64" => "mac-aarch64"
+    case (n, _) if n.startsWith("Mac") => "mac"
+    case (n, _) if n.startsWith("Windows") => "win"
     case _ => throw new Exception("Unknown platform!")
   }
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName)
+    .map(m => "org.openjfx" % s"javafx-$m" % "21" classifier osName)
 }

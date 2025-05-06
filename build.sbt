@@ -2,9 +2,11 @@ name         := "behaviorsearch"
 organization := "bsearch"
 isSnapshot   := true
 
+scalaVersion := "2.13.16"
+
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "6.4.0"
+netLogoVersion := "7.0.0-internal1-df97144"
 resolvers += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 
 libraryDependencies ++= Seq(

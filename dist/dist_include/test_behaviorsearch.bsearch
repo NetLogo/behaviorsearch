@@ -2,7 +2,7 @@
 <!DOCTYPE search SYSTEM "behaviorsearch.dtd">
 <search>
 <modelInfo>
-<modelFile>test_behaviorsearch.nlogo</modelFile>
+<modelFile>test_behaviorsearch.nlogox</modelFile>
 <modelSetupCommands></modelSetupCommands>
 <modelStepCommands></modelStepCommands>
 <modelStopCondition></modelStopCondition>

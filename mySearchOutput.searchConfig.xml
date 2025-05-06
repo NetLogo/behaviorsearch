@@ -3,7 +3,7 @@
 <search>
 <bsearchVersionNumber>1.00</bsearchVersionNumber>
 <modelInfo>
-<modelFile>Some Model.nlogo</modelFile>
+<modelFile>Some Model.nlogox</modelFile>
 <modelSetupCommands>setup klj</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition>count turtles &gt; 1000</modelStopCondition>

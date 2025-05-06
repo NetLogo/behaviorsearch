@@ -2,7 +2,7 @@
 <!DOCTYPE search SYSTEM "behaviorsearch.dtd">
 <search>
 <modelInfo>
-<modelFile>/home/forrest/apps/netlogo-4.1/models/Sample Models/Biology/Wolf Sheep Predation.nlogo</modelFile>
+<modelFile>/home/forrest/apps/netlogo-4.1/models/Sample Models/Biology/Wolf Sheep Predation.nlogox</modelFile>
 <modelSetupCommands>setup</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition/>

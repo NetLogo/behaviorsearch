@@ -3,7 +3,7 @@
 <search>
 <bsearchVersionNumber>1.00</bsearchVersionNumber>
 <modelInfo>
-<modelFile>../../models/Sample Models/Earth Science/Fire.nlogo</modelFile>
+<modelFile>../../models/Sample Models/Earth Science/Fire.nlogox</modelFile>
 <modelSetupCommands>setup</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition>not any? turtles</modelStopCondition>

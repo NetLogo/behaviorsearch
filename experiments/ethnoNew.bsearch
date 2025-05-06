@@ -2,7 +2,7 @@
 <!DOCTYPE search SYSTEM "behaviorsearch.dtd">
 <search>
 <modelInfo>
-<modelFile>../netlogo/models/Sample Models/Social Science/Ethnocentrism.nlogo</modelFile>
+<modelFile>../netlogo/models/Sample Models/Social Science/Ethnocentrism.nlogox</modelFile>
 <modelSetupCommands>setup-full</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition/>

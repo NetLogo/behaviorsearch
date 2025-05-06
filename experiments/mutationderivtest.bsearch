@@ -3,7 +3,7 @@
 <search>
 <bsearchVersionNumber>0.74</bsearchVersionNumber>
 <modelInfo>
-<modelFile>Ethnocentrism-bench.nlogo</modelFile>
+<modelFile>Ethnocentrism-bench.nlogox</modelFile>
 <modelSetupCommands>setup-empty</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition/>

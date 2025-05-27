@@ -17,6 +17,8 @@ jobs:
           java-version: '17.0'
           java-package: jdk+fx
 
+      - uses: sbt/setup-sbt@v1
+          
       - name: Clone Models
         run: |
           cd ..

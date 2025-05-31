@@ -2,7 +2,7 @@
 <!DOCTYPE search SYSTEM "behaviorsearch.dtd">
 <search>
 <modelInfo>
-<modelFile>/home/forrest/prog/workspace/behaviorsearch/test/Tester.nlogox</modelFile>
+<modelFile>/home/forrest/prog/workspace/behaviorsearch/test/Tester.nlogo</modelFile>
 <modelSetupCommands>setup</modelSetupCommands>
 <modelStepCommands>go</modelStepCommands>
 <modelStopCondition>count turtles &gt; 1000</modelStopCondition>

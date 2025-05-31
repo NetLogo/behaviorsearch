@@ -5,11 +5,11 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class GeneralUtils {
-	//NOTE: Before release, need to change the version number here, 
+	//NOTE: Before release, need to change the version number here,
 	//      and in the dist/version_number.txt file
 	private static final String VERSION_STRING = "1.10";
 	private static final double VERSION_NUMBER = 1.10;
-	
+
 	public static String getVersionString()
 	{
 		return VERSION_STRING;
@@ -24,22 +24,22 @@ public class GeneralUtils {
 		Scanner scanner = new java.util.Scanner(file);
 		String contents = scanner.useDelimiter("\\Z").next(); // slurp the whole file
 		scanner.close();
-		return contents;
+		return contents.replace("\r\n", "\n");
 	}
-	
+
 	public static String stringJoin(java.util.Collection<?> s, String delimiter) {
 	     StringBuilder builder = new StringBuilder();
 	     java.util.Iterator<?> iter = s.iterator();
 	     while (iter.hasNext()) {
 	         builder.append(iter.next());
 	         if (!iter.hasNext()) {
-	           break;                  
+	           break;
 	         }
 	         builder.append(delimiter);
 	     }
 	     return builder.toString();
 	 }
-	
+
 	public static String formatTimeNicely(long millis)
 	{
 		int seconds = (int) Math.round(millis / 1000.0);
@@ -53,7 +53,7 @@ public class GeneralUtils {
 		}
 		else
 		{
-			return minutes + ":" + String.format("%02d",seconds);			
+			return minutes + ":" + String.format("%02d",seconds);
 		}
 	}
 
@@ -67,7 +67,7 @@ public class GeneralUtils {
 			return s;
 		}
 	}
-	
+
 	/** returns html text for the parameter settings given, separated by newlines */
 	public static String getParamSettingsTextHTML( LinkedHashMap<String, Object> paramSettings) {
 		int longestParamLength = 0;
@@ -91,13 +91,13 @@ public class GeneralUtils {
 		sb.append("</pre>");
 		return sb.toString();
 	}
-	
+
 	public static boolean isOSWindows()
 	{
-	    return System.getProperty("os.name").toLowerCase().indexOf( "windows" ) >= 0; 
+	    return System.getProperty("os.name").toLowerCase().indexOf( "windows" ) >= 0;
 	}
-	
-	
+
+
 	//Because NetLogo is finicky, we *must* launch BehaviorSearch with the working folder (current directory)
 	//set to the NetLogo folder.  However, our launching scripts set these Java properties, so we know
 	//what the original "working folder" is, and also where the BehaviorSearch application folder is.
@@ -116,12 +116,12 @@ public class GeneralUtils {
 		{
 			return pathStr;
 		}
-		
+
 		File startupFolder = new File(startupFolderStr);
-		
+
 		return new File(startupFolder,pathStr).getAbsolutePath();
 	}
-	
+
 	private static File protocolFolder = null;
 	public static void updateProtocolFolder(String protocolFilename)
 	{
@@ -144,8 +144,8 @@ public class GeneralUtils {
 		{
 			return pathStr;
 		}
-		
-		return new File(protocolFolder,pathStr).getAbsolutePath();		
+
+		return new File(protocolFolder,pathStr).getAbsolutePath();
 	}
 
 	public static String attemptResolvePathFromBSearchRoot(String pathStr)
@@ -153,7 +153,7 @@ public class GeneralUtils {
 		// check if the program was started in the NetLogo folder, in which case behaviorsearch is in a subfolder.
 		// NOTE: As of NetLogo 4.1 anyway,
 		// if you don't start the JVM with the NetLogo app folder as the current working directory,
-		// then NetLogo doesn't find its built-in extensions folder, and some other things... 		
+		// then NetLogo doesn't find its built-in extensions folder, and some other things...
 		File rootDir;
 		if (bsearchAppFolderStr != null && !bsearchAppFolderStr.equals(""))
 		{
@@ -161,15 +161,15 @@ public class GeneralUtils {
 		}
 		else
 		{
-			rootDir = new File("behaviorsearch");			
+			rootDir = new File("behaviorsearch");
 		}
 		if (rootDir.exists() && rootDir.isDirectory())
 		{
-			return new File(rootDir,pathStr).getAbsolutePath();	
+			return new File(rootDir,pathStr).getAbsolutePath();
 		}
 		return pathStr;
 	}
-	
+
 	public static File getResource(String fileName)
 	{
 		return new File(attemptResolvePathFromBSearchRoot("resources/" + fileName));

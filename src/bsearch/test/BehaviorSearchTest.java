@@ -42,8 +42,6 @@ import bsearch.util.GeneralUtils;
 
 public class BehaviorSearchTest
 {
-  public static final String DEFAULT_MODEL_PATH = "../models/Sample Models/";
-
 	// a main method to run it -- for convenience.
 	public static void main( String... args )
 	{
@@ -51,15 +49,7 @@ public class BehaviorSearchTest
 	}
 
   public String sampleModelsPath() {
-    String osName = System.getProperty("os.name");
-    String netLogoVersion = Version$.MODULE$.version();
-    if (osName.contains("Mac")) {
-      return "/Applications/" + netLogoVersion + "/models/Sample Models/";
-    } else if (osName.contains("Win")) {
-      return "C:\\Program Files\\" + netLogoVersion + "/app/models/Sample Models/";
-    } else {
-      return DEFAULT_MODEL_PATH;
-    }
+    return "../models/Sample Models/";
   }
 
 
@@ -68,7 +58,7 @@ public class BehaviorSearchTest
 	{
 		ModelRunner runner;
 		LinkedHashMap<String,Object> params;
-    	runner = bsearch.nlogolink.ModelRunner.createModelRunnerForTesting(sampleModelsPath() + "Earth Science/Fire.nlogo", true, 100);
+    	runner = bsearch.nlogolink.ModelRunner.createModelRunnerForTesting(sampleModelsPath() + "Earth Science/Fire.nlogox", true, 100);
     	runner.setSetupCommands( "setup" );
     	runner.setStepCommands( "go" );
     	runner.setStopConditionReporter( "burned-trees > 3000" );
@@ -96,7 +86,7 @@ public class BehaviorSearchTest
     {
 		ModelRunner runner;
 		LinkedHashMap<String,Object> params;
-    	runner = bsearch.nlogolink.ModelRunner.createModelRunnerForTesting(sampleModelsPath() + "Earth Science/Fire.nlogo", false, 100);
+    	runner = bsearch.nlogolink.ModelRunner.createModelRunnerForTesting(sampleModelsPath() + "Earth Science/Fire.nlogox", false, 100);
     	runner.setSetupCommands( "setup" );
     	runner.setStepCommands( "go" );
     	runner.setStopConditionReporter( "burned-trees > 3000" );
@@ -121,7 +111,7 @@ public class BehaviorSearchTest
 	@Test
 	public void testConstraintsTextGeneration() throws BehaviorSearchException, NetLogoLinkException
     {
-		Assert.assertEquals(bsearch.nlogolink.Utils.getDefaultConstraintsText(sampleModelsPath() + "/Social Science/Ethnocentrism.nlogo").trim(),
+		Assert.assertEquals(bsearch.nlogolink.Utils.getDefaultConstraintsText(sampleModelsPath() + "/Social Science/Ethnocentrism.nlogox").trim(),
 		"[\"mutation-rate\" [0 0.001 1]]\n[\"death-rate\" [0 0.05 1]]\n[\"immigrants-per-day\" [0 1 100]]\n[\"initial-ptr\" [0 0.01 1]]\n[\"cost-of-giving\" [0 0.01 1]]\n[\"gain-of-receiving\" [0 0.01 1]]\n[\"immigrant-chance-cooperate-with-same\" [0 0.01 1]]\n[\"immigrant-chance-cooperate-with-different\" [0 0.01 1]]");
     }
 

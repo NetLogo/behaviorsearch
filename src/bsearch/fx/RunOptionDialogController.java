@@ -30,165 +30,165 @@ import javafx.stage.Window;
 import javafx.util.StringConverter;
 
 public class RunOptionDialogController {
-	@FXML
-	AnchorPane anchorPane;
-	@FXML
-	Button browseButton;
-	@FXML
-	TextField outputPathTextField;
-	@FXML
-	Spinner<Integer> searchesNumSpinner;
-	@FXML
-	Spinner<Integer> startingSearchIDSpinner;
-	@FXML
-	Spinner<Integer> iniRanSeedSpinner;
-	@FXML
-	Button newRanSeedButton;
-	@FXML
-	Spinner<Integer> threadNumSpinner;
-	@FXML
-	CheckBox briefOutputCheckBox;
-	@FXML
-	Button startSearchButton;
-	@FXML
-	Button cancelButton;
+    @FXML
+    AnchorPane anchorPane;
+    @FXML
+    Button browseButton;
+    @FXML
+    TextField outputPathTextField;
+    @FXML
+    Spinner<Integer> searchesNumSpinner;
+    @FXML
+    Spinner<Integer> startingSearchIDSpinner;
+    @FXML
+    Spinner<Integer> iniRanSeedSpinner;
+    @FXML
+    Button newRanSeedButton;
+    @FXML
+    Spinner<Integer> threadNumSpinner;
+    @FXML
+    CheckBox briefOutputCheckBox;
+    @FXML
+    Button startSearchButton;
+    @FXML
+    Button cancelButton;
 
-	private MainController main;
+    private MainController main;
 
-	private RunOptions runOptions;
+    private RunOptions runOptions;
 
-	public void ini(RunOptions runOptions, MainController main) {
-		this.runOptions = runOptions;
-		outputPathTextField.setText(runOptions.outputStem);
+    public void ini(RunOptions runOptions, MainController main) {
+        this.runOptions = runOptions;
+        outputPathTextField.setText(runOptions.outputStem);
 
-		searchesNumSpinner
-				.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, runOptions.numSearches));
-		startingSearchIDSpinner.setValueFactory(
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, runOptions.firstSearchNumber));
-		threadNumSpinner
-				.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1024, runOptions.numThreads));
-		iniRanSeedSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(Integer.MIN_VALUE,
-				Integer.MAX_VALUE, runOptions.randomSeed.intValue()));
-		briefOutputCheckBox.setSelected(runOptions.briefOutput);
-		searchesNumSpinner.getValueFactory()
-				.setConverter(new myStringConverter<>(searchesNumSpinner.getValueFactory().getConverter()));
-		startingSearchIDSpinner.getValueFactory()
-				.setConverter(new myStringConverter<>(startingSearchIDSpinner.getValueFactory().getConverter()));
-		threadNumSpinner.getValueFactory()
-				.setConverter(new myStringConverter<>(threadNumSpinner.getValueFactory().getConverter()));
-		iniRanSeedSpinner.getValueFactory()
-				.setConverter(new myStringConverter<>(iniRanSeedSpinner.getValueFactory().getConverter()));
+        searchesNumSpinner
+                .setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, runOptions.numSearches));
+        startingSearchIDSpinner.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, runOptions.firstSearchNumber));
+        threadNumSpinner
+                .setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 1024, runOptions.numThreads));
+        iniRanSeedSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(Integer.MIN_VALUE,
+                Integer.MAX_VALUE, runOptions.randomSeed.intValue()));
+        briefOutputCheckBox.setSelected(runOptions.briefOutput);
+        searchesNumSpinner.getValueFactory()
+                .setConverter(new myStringConverter<>(searchesNumSpinner.getValueFactory().getConverter()));
+        startingSearchIDSpinner.getValueFactory()
+                .setConverter(new myStringConverter<>(startingSearchIDSpinner.getValueFactory().getConverter()));
+        threadNumSpinner.getValueFactory()
+                .setConverter(new myStringConverter<>(threadNumSpinner.getValueFactory().getConverter()));
+        iniRanSeedSpinner.getValueFactory()
+                .setConverter(new myStringConverter<>(iniRanSeedSpinner.getValueFactory().getConverter()));
 
-		this.main = main;
-		//http://stackoverflow.com/questions/32340476/manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
-		
-		searchesNumSpinner.focusedProperty().addListener((s, ov, nv) -> {
-		    if (nv) return;
-		    commitEditorText(searchesNumSpinner);
-		});
-		startingSearchIDSpinner.focusedProperty().addListener((s, ov, nv) -> {
-		    if (nv) return;
-		    commitEditorText(startingSearchIDSpinner);
-		});
-		threadNumSpinner.focusedProperty().addListener((s, ov, nv) -> {
-		    if (nv) return;
-		    commitEditorText(threadNumSpinner);
-		});
-		iniRanSeedSpinner.focusedProperty().addListener((s, ov, nv) -> {
-		    if (nv) return;
-		    commitEditorText(iniRanSeedSpinner);
-		});
-		
-	}
+        this.main = main;
+        //http://stackoverflow.com/questions/32340476/manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
 
-	private Window getMainWindow() {
-		if (anchorPane != null && anchorPane.getScene() != null) {
-			return anchorPane.getScene().getWindow();
-		} else {
-			return null;
-		}
-	}
+        searchesNumSpinner.focusedProperty().addListener((s, ov, nv) -> {
+            if (nv) return;
+            commitEditorText(searchesNumSpinner);
+        });
+        startingSearchIDSpinner.focusedProperty().addListener((s, ov, nv) -> {
+            if (nv) return;
+            commitEditorText(startingSearchIDSpinner);
+        });
+        threadNumSpinner.focusedProperty().addListener((s, ov, nv) -> {
+            if (nv) return;
+            commitEditorText(threadNumSpinner);
+        });
+        iniRanSeedSpinner.focusedProperty().addListener((s, ov, nv) -> {
+            if (nv) return;
+            commitEditorText(iniRanSeedSpinner);
+        });
 
-	public void browseFile(ActionEvent event) {
-		FileChooser fileChooser = new FileChooser();
-		File parentFolder = new File(outputPathTextField.getText()).getParentFile();
-		if (parentFolder != null && parentFolder.exists()) {
-			fileChooser.setInitialDirectory(parentFolder);
-			// file type???
-			fileChooser.setInitialFileName("MySearchOutput");
+    }
 
-		}
+    private Window getMainWindow() {
+        if (anchorPane != null && anchorPane.getScene() != null) {
+            return anchorPane.getScene().getWindow();
+        } else {
+            return null;
+        }
+    }
 
-		File selectedFile = fileChooser.showSaveDialog(getMainWindow());
-		if (selectedFile != null) {
-			outputPathTextField.setText(selectedFile.getPath());
-		}
+    public void browseFile(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        File parentFolder = new File(outputPathTextField.getText()).getParentFile();
+        if (parentFolder != null && parentFolder.exists()) {
+            fileChooser.setInitialDirectory(parentFolder);
+            // file type???
+            fileChooser.setInitialFileName("MySearchOutput");
 
-	}
+        }
 
-	public void newRanSeed(ActionEvent event) {
-		iniRanSeedSpinner.getValueFactory().setValue(new MersenneTwisterFast().nextInt());
+        File selectedFile = fileChooser.showSaveDialog(getMainWindow());
+        if (selectedFile != null) {
+            outputPathTextField.setText(selectedFile.getPath());
+        }
 
-	}
+    }
 
-	public void updateOptions(ActionEvent event) {
-		runOptions.outputStem = outputPathTextField.getText();
-		runOptions.numSearches = (Integer) searchesNumSpinner.getValue();
-		runOptions.firstSearchNumber = (Integer) startingSearchIDSpinner.getValue();
-		runOptions.numThreads = (Integer) threadNumSpinner.getValue();
-		runOptions.randomSeed = (Integer) iniRanSeedSpinner.getValue();
-		runOptions.briefOutput = briefOutputCheckBox.isSelected();
+    public void newRanSeed(ActionEvent event) {
+        iniRanSeedSpinner.getValueFactory().setValue(new MersenneTwisterFast().nextInt());
 
-		// trying to open progress from here
+    }
 
-		Node source = (Node) event.getSource();
-		Stage thisStage = (Stage) source.getScene().getWindow();
+    public void updateOptions(ActionEvent event) {
+        runOptions.outputStem = outputPathTextField.getText();
+        runOptions.numSearches = (Integer) searchesNumSpinner.getValue();
+        runOptions.firstSearchNumber = (Integer) startingSearchIDSpinner.getValue();
+        runOptions.numThreads = (Integer) threadNumSpinner.getValue();
+        runOptions.randomSeed = (Integer) iniRanSeedSpinner.getValue();
+        runOptions.briefOutput = briefOutputCheckBox.isSelected();
 
-		thisStage.close();
-		main.displayProgressDialog();
-	}
+        // trying to open progress from here
 
-	public void cancel(ActionEvent event) {
-		Node source = (Node) event.getSource();
-		Stage stage = (Stage) source.getScene().getWindow();
-		stage.close();
-	}
-	//http://stackoverflow.com/questions/32340476/manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
-	private <T> void commitEditorText(Spinner<T> spinner) {
-	    if (!spinner.isEditable()) return;
-	    String text = spinner.getEditor().getText();
-	    SpinnerValueFactory<T> valueFactory = spinner.getValueFactory();
-	    if (valueFactory != null) {
-	        StringConverter<T> converter = valueFactory.getConverter();
-	        if (converter != null) {
-	            T value = converter.fromString(text);
-	            valueFactory.setValue(value);
-	        }
-	    }
-	}
+        Node source = (Node) event.getSource();
+        Stage thisStage = (Stage) source.getScene().getWindow();
 
-	class myStringConverter<Interger> extends StringConverter<Integer> {
-		StringConverter<Integer> original;
+        thisStage.close();
+        main.displayProgressDialog();
+    }
 
-		public myStringConverter(StringConverter<Integer> original) {
-			this.original = original;
-		}
+    public void cancel(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
+    //http://stackoverflow.com/questions/32340476/manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
+    private <T> void commitEditorText(Spinner<T> spinner) {
+        if (!spinner.isEditable()) return;
+        String text = spinner.getEditor().getText();
+        SpinnerValueFactory<T> valueFactory = spinner.getValueFactory();
+        if (valueFactory != null) {
+            StringConverter<T> converter = valueFactory.getConverter();
+            if (converter != null) {
+                T value = converter.fromString(text);
+                valueFactory.setValue(value);
+            }
+        }
+    }
 
-		@Override
-		public Integer fromString(String value) {
-			try {
-				return original.fromString(value);
-			} catch (NumberFormatException nfe) {
-				MainController.handleError("Bad integer: " + value);
+    class myStringConverter<Interger> extends StringConverter<Integer> {
+        StringConverter<Integer> original;
 
-				return 0;
-			}
-		}
+        public myStringConverter(StringConverter<Integer> original) {
+            this.original = original;
+        }
 
-		@Override
-		public String toString(Integer value) {
-			return original.toString(value);
-		}
-	};
+        @Override
+        public Integer fromString(String value) {
+            try {
+                return original.fromString(value);
+            } catch (NumberFormatException nfe) {
+                MainController.handleError("Bad integer: " + value);
+
+                return 0;
+            }
+        }
+
+        @Override
+        public String toString(Integer value) {
+            return original.toString(value);
+        }
+    };
 
 }

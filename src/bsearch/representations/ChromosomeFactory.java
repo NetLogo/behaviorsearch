@@ -8,8 +8,8 @@ import bsearch.space.SearchSpace;
 
 public interface ChromosomeFactory {
 
-	public abstract Chromosome createChromosome(SearchSpace searchSpace , MersenneTwisterFast rng);
-	public abstract Chromosome createChromosome( SearchSpace searchSpace, LinkedHashMap<String,Object> paramSettings);
-	public abstract String getHTMLHelpText();
-	
+    public abstract Chromosome createChromosome(SearchSpace searchSpace , MersenneTwisterFast rng);
+    public abstract Chromosome createChromosome( SearchSpace searchSpace, LinkedHashMap<String,Object> paramSettings);
+    public abstract String getHTMLHelpText();
+
 }

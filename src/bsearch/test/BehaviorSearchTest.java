@@ -112,7 +112,7 @@ public class BehaviorSearchTest
     public void testConstraintsTextGeneration() throws BehaviorSearchException, NetLogoLinkException
     {
         Assert.assertEquals(bsearch.nlogolink.Utils.getDefaultConstraintsText(sampleModelsPath() + "/Social Science/Ethnocentrism.nlogox").trim(),
-        "[\"mutation-rate\" [0 0.001 1]]\n[\"death-rate\" [0 0.05 1]]\n[\"immigrants-per-day\" [0 1 100]]\n[\"initial-ptr\" [0 0.01 1]]\n[\"cost-of-giving\" [0 0.01 1]]\n[\"gain-of-receiving\" [0 0.01 1]]\n[\"immigrant-chance-cooperate-with-same\" [0 0.01 1]]\n[\"immigrant-chance-cooperate-with-different\" [0 0.01 1]]");
+        "[\"immigrants-per-day\" [0 1 100]]\n[\"death-rate\" [0 0.05 1]]\n[\"mutation-rate\" [0 0.001 1]]\n[\"immigrant-chance-cooperate-with-different\" [0 0.01 1]]\n[\"initial-ptr\" [0 0.01 1]]\n[\"cost-of-giving\" [0 0.01 1]]\n[\"gain-of-receiving\" [0 0.01 1]]\n[\"immigrant-chance-cooperate-with-same\" [0 0.01 1]]");
     }
 
 

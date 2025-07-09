@@ -92,7 +92,7 @@ public class TempTest {
         /*      try {
 
             HeadlessWorkspace workspace = Utils.createWorkspace();
-            workspace.open("Tester.nlogo");
+            workspace.open("Tester.nlogox");
             //workspace.compileForRun("to meow __stdout 1234 end");
 //          workspace.compiler().
 

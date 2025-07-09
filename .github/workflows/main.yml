@@ -11,14 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
-          distribution: 'liberica'
-          java-version: '17.0'
+          distribution: zulu
+          java-version: 17
           java-package: jdk+fx
+          cache: sbt
 
       - uses: sbt/setup-sbt@v1
-          
+
       - name: Clone Models
         run: |
           cd ..

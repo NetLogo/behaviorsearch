@@ -16,11 +16,19 @@ public class Utils {
 
     private static HeadlessWorkspace emptyWorkspace;
 
-    public static Object evaluateNetLogoReporterInEmptyWorkspace(String reporterString ) throws NetLogoLinkException
+    public static Object evaluateNetLogoReporterInEmptyWorkspace(String reporterString, Boolean is3d) throws NetLogoLinkException
     {
         if (emptyWorkspace == null)
         {
-            emptyWorkspace = HeadlessWorkspace.newInstance();
+            emptyWorkspace = HeadlessWorkspace.newInstance(is3d);
+        }
+        else if (emptyWorkspace.is3d() != is3d)
+        {
+            try {
+                emptyWorkspace.dispose();
+            } catch (InterruptedException e) {
+            }
+            emptyWorkspace = HeadlessWorkspace.newInstance(is3d);
         }
         try {
             return emptyWorkspace.report( reporterString );
@@ -31,10 +39,10 @@ public class Utils {
     }
 
 
-    public static HeadlessWorkspace createWorkspace()
+    public static HeadlessWorkspace createWorkspace(Boolean is3d)
     {
         System.setProperty("org.nlogo.preferHeadless", "true");
-        HeadlessWorkspace workspace = HeadlessWorkspace.newInstance();
+        HeadlessWorkspace workspace = HeadlessWorkspace.newInstance(is3d);
         return workspace;
     }
     /** If you don't call this method, there will still be a NetLogo workspace thread running in the background, which might
@@ -48,7 +56,7 @@ public class Utils {
 
     public static String getDefaultConstraintsText(String modelFileName) throws NetLogoLinkException
     {
-        HeadlessWorkspace workspace = Utils.createWorkspace();
+        HeadlessWorkspace workspace = Utils.createWorkspace(modelFileName.endsWith(".nlogo3d") || modelFileName.endsWith(".nlogox3d"));
 
         try {
           workspace.open(modelFileName, false);

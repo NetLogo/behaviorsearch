@@ -8,14 +8,14 @@ import java.util.List;
 public class SearchSpace {
     private final ArrayList<ParameterSpec> paramSpecs;
 
-    public SearchSpace(List<String> paramSpecStrings)
+    public SearchSpace(List<String> paramSpecStrings, Boolean is3d)
     {
         this.paramSpecs = new ArrayList<ParameterSpec>();
         for (String spec: paramSpecStrings)
         {
             if (spec.trim().length() > 0)
             {
-                addParamSpec(ParameterSpec.fromString(spec));
+                addParamSpec(ParameterSpec.fromString(spec, is3d));
             }
         }
     }

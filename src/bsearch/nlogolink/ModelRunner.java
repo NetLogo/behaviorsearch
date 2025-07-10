@@ -39,7 +39,7 @@ public class ModelRunner {
     private ModelRunner(String modelFileName, boolean recordEveryTick, int maxModelSteps)
         throws LogoException, IOException, CompilerException
     {
-        workspace = Utils.createWorkspace();
+        workspace = Utils.createWorkspace(modelFileName.endsWith(".nlogo3d") || modelFileName.endsWith(".nlogox3d"));
         workspace.open(modelFileName, false);
 
         this.recordEveryTick = recordEveryTick;

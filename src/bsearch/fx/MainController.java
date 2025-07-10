@@ -673,7 +673,8 @@ public class MainController implements Initializable {
             this.SODeltaField.setDisable(false);
             this.SOFitnessDerivativeUseAbsCheckBox.setDisable(false);
             List<String> wrt = new ArrayList<String>();
-            SearchSpace ss = new SearchSpace(java.util.Arrays.asList(this.MParamSpecsArea.getText().split("\n")));
+            String name = currentFile.toString();
+            SearchSpace ss = new SearchSpace(java.util.Arrays.asList(this.MParamSpecsArea.getText().split("\n")), name.endsWith(".nlogo3d") || name.endsWith(".nlogox3d"));
 
             for (ParameterSpec spec : ss.getParamSpecs()) {
                 wrt.add(spec.getParameterName());

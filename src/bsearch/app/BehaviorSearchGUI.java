@@ -947,7 +947,8 @@ public class BehaviorSearchGUI extends javax.swing.JFrame {
     {
         try {
             Object oldChoice = jComboBoxFitnessDerivativeParameter.getSelectedItem();
-            SearchSpace ss = new SearchSpace(java.util.Arrays.asList(jTextAreaParamSpecs.getText().split("\n")));
+            String name = currentFile.toString();
+            SearchSpace ss = new SearchSpace(java.util.Arrays.asList(jTextAreaParamSpecs.getText().split("\n")), name.endsWith(".nlogo3d") || name.endsWith(".nlogox3d"));
             DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBoxFitnessDerivativeParameter.getModel();
             model.removeAllElements();
             for (ParameterSpec spec : ss.getParamSpecs())

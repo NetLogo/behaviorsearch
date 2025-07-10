@@ -38,10 +38,10 @@ public abstract class ParameterSpec {
      * Takes a textual parameter specification, and gives back an appropriate ParameterSpec object
      * @param paramString
      */
-    public static ParameterSpec fromString(String paramString)
+    public static ParameterSpec fromString(String paramString, Boolean is3d)
     {
         try {
-            Object obj = bsearch.nlogolink.Utils.evaluateNetLogoReporterInEmptyWorkspace(paramString);
+            Object obj = bsearch.nlogolink.Utils.evaluateNetLogoReporterInEmptyWorkspace(paramString, is3d);
             if (obj instanceof LogoList)
             {
                 LogoList lst = (LogoList) obj;

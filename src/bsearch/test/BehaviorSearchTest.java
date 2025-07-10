@@ -150,7 +150,7 @@ public class BehaviorSearchTest
                                                         "[\"continuous0to1.5\" [0.0 \"C\" 1.5]]",
                                                         "[\"categorical\" \"apple\" \"banana\" \"cherry\"]",
                                                         "[\"const\" 25]",
-                                                        "[\"discretedecimal\" [-1 0.17 2]]"));
+                                                        "[\"discretedecimal\" [-1 0.17 2]]"), false);
         MersenneTwisterFast rng = new MersenneTwisterFast();
 
         for (String chromoType: ChromosomeTypeLoader.getAllChromosomeTypes())
@@ -198,7 +198,7 @@ public class BehaviorSearchTest
         int numBits = 8;
         boolean[] bits = new boolean[numBits + 12];
 
-        SearchSpace ss = new SearchSpace(Arrays.asList("[\"moo\" [1 1 4]]"));
+        SearchSpace ss = new SearchSpace(Arrays.asList("[\"moo\" [1 1 4]]"), false);
         GrayBinaryChromosome bcgray = new GrayBinaryChromosome(ss, new MersenneTwisterFast() );
         StandardBinaryChromosome bcstd = new StandardBinaryChromosome(ss, new MersenneTwisterFast() );
 

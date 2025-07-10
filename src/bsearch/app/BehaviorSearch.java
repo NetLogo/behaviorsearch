@@ -39,7 +39,7 @@ public class BehaviorSearch {
 
     public static void runMultipleSearches(SearchProtocol protocol, int numSearches, int firstSearchNumber, String fnameStem, List<ResultListener> listeners, int numThreads, int firstRandomSeed) throws BehaviorSearchException, InterruptedException, SearchParameterException
     {
-        SearchSpace space = new SearchSpace(protocol.paramSpecStrings);
+        SearchSpace space = new SearchSpace(protocol.paramSpecStrings, protocol.modelFile.endsWith(".nlogo3d") || protocol.modelFile.endsWith(".nlogox3d"));
 
         for (ResultListener listener : listeners) {
             listener.initListener(space);
@@ -270,11 +270,11 @@ public class BehaviorSearch {
         // allow users to override parameter spec ranges from the command line...
         for (String override : runOptions.overrideParameters)
         {
-            ParameterSpec newSpec = ParameterSpec.fromString(override);
+            ParameterSpec newSpec = ParameterSpec.fromString(override, protocol.modelFile.endsWith(".nlogo3d") || protocol.modelFile.endsWith(".nlogox3d"));
             boolean foundReplacement = false;
 
             for (int i = 0; i < protocol.paramSpecStrings.size(); i++) {
-                ParameterSpec spec = ParameterSpec.fromString(protocol.paramSpecStrings.get(i));
+                ParameterSpec spec = ParameterSpec.fromString(protocol.paramSpecStrings.get(i), protocol.modelFile.endsWith(".nlogo3d") || protocol.modelFile.endsWith(".nlogox3d"));
                 if (spec.getParameterName().equals(newSpec.getParameterName())) {
                     protocol.paramSpecStrings.remove(i);
                     protocol.paramSpecStrings.add(i, override);

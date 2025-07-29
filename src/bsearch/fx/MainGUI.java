@@ -21,7 +21,7 @@ public class MainGUI extends Application{
         try {
         // root gets layout from BSearchMain.fxml file, created with FX
         // Scene Builder.
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BSearchMain.fxml"));
+        FXMLLoader loader = new FXMLLoader(GeneralUtils.getResource("BSearchMain.fxml").toURI().toURL());
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

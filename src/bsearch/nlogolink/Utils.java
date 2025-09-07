@@ -41,9 +41,7 @@ public class Utils {
 
     public static HeadlessWorkspace createWorkspace(Boolean is3d)
     {
-        System.setProperty("org.nlogo.preferHeadless", "true");
-        HeadlessWorkspace workspace = HeadlessWorkspace.newInstance(is3d);
-        return workspace;
+        return HeadlessWorkspace.newInstance(is3d);
     }
     /** If you don't call this method, there will still be a NetLogo workspace thread running in the background, which might
      * prevent your application from shutting down naturally when main() is exited, for instance.  If you call

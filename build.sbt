@@ -6,11 +6,10 @@ scalaVersion := "2.13.16"
 
 val netLogoVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "7.0.0-424b50b"
+netLogoVersion := "7.0.0-2486d1e"
 
 resolvers ++= Seq(
-  "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/",
-  "jitpack" at "https://jitpack.io"
+  "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
 )
 
 libraryDependencies ++= Seq(

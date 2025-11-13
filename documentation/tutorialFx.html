@@ -1,52 +1,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Your description goes here" />
-	<meta name="keywords" content="your,keywords,goes,here" />
-	<meta name="author" content="Your Name" />
-	<link rel="stylesheet" type="text/css" href="docs.css" title="" media="screen,projection" />
-	<title>BehaviorSearch Documentation</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Your description goes here" />
+    <meta name="keywords" content="your,keywords,goes,here" />
+    <meta name="author" content="Your Name" />
+    <link rel="stylesheet" type="text/css" href="docs.css" title="" media="screen,projection" />
+    <title>BehaviorSearch Documentation</title>
 </head>
 
 <body>
 <div id="container">
-	<div id="header">
-	<img src="img/icon_behaviorsearch_sm.png"/>		
-	<h1>BehaviorSearch Documentation</h1>
-	</div>
+    <div id="header">
+    <img src="img/icon_behaviorsearch_sm.png"/>
+    <h1>BehaviorSearch Documentation</h1>
+    </div>
 
-	<div id="navigation">
-		<ul>
-			<li class="selected"><a href="#">Basic Tutorial</a></li>
-			<li><a href="http://www.behaviorsearch.org/">BehaviorSearch Web Site</a></li>
-		</ul>
-	</div>
+    <div id="navigation">
+        <ul>
+            <li class="selected"><a href="#">Basic Tutorial</a></li>
+            <li><a href="http://www.behaviorsearch.org/">BehaviorSearch Web Site</a></li>
+        </ul>
+    </div>
 
-	<div id="content">
+    <div id="content">
 
-		<!-- <div class="splitcontentleft"> -->
+        <!-- <div class="splitcontentleft"> -->
 
-		<h2>Tutorial topics:</h2>
-		<ul class="menublock">
-			<li><a href="#">Getting Started</a>
-				<ul>
-					<li><a href="#bigidea">What's the big idea?</a>
-					<li><a href="#parameterspace">Specifying a parameter space</a>
-					<li><a href="#designmeasure">Designing a behavioral measure</a></li>
-					<li><a href="#choosealgorithm">Choosing a search algorithm</a></li>
-					<li><a href="#results">Running the search and examining the results</a></li>
-				</ul></li>
-			<li><a href="#commandline">Command Line Usage</a></li>
-			<li><a href="#morehelp">Additional help, feedback, bug reports, etc.</a></li>
-		</ul>
+        <h2>Tutorial topics:</h2>
+        <ul class="menublock">
+            <li><a href="#">Getting Started</a>
+                <ul>
+                    <li><a href="#bigidea">What's the big idea?</a>
+                    <li><a href="#parameterspace">Specifying a parameter space</a>
+                    <li><a href="#designmeasure">Designing a behavioral measure</a></li>
+                    <li><a href="#choosealgorithm">Choosing a search algorithm</a></li>
+                    <li><a href="#results">Running the search and examining the results</a></li>
+                </ul></li>
+            <li><a href="#commandline">Command Line Usage</a></li>
+            <li><a href="#morehelp">Additional help, feedback, bug reports, etc.</a></li>
+        </ul>
 <!-- ------------  --> <br/><hr/><br/> <!-- ------------  -->
-		<!-- </div> 
-		<div class="splitcontentright">
+        <!-- </div>
+        <div class="splitcontentright">
 
-		</div> -->
-		<a name="bigidea"></a>
-		<h3 class="clear">Getting Started: What's the big idea?</h3>
+        </div> -->
+        <a name="bigidea"></a>
+        <h3 class="clear">Getting Started: What's the big idea?</h3>
 
 <p>BehaviorSearch is a software tool designed to help with automating the exploration of agent-based models (ABMs), by using genetic algorithms and other heuristic techniques to search the parameter-space.</p>
 
@@ -58,7 +58,7 @@
   <li>Choose model parameters to vary and what ranges are allowed.</li>
   <li>Design a quantitative measure for a behavior of interest.</li>
   <li>Choose a search algorithm to find parameters that maximize (or minimize) your measure.</li>
-  <li>Run the search and examine the results.</li>  
+  <li>Run the search and examine the results.</li>
 </ol>
 </p>
 <br/>
@@ -72,7 +72,7 @@
 </div>
 
 <p>When you first open BehaviorSearch, the window that appears is the BehaviorSearch Experiment Editor.
-BehaviorSearch is centered around the paradigm of an <i>experiment</i> (or <i>search protocol</i>), which contains all of the information necessary to specify how the search should be performed on a model.  
+BehaviorSearch is centered around the paradigm of an <i>experiment</i> (or <i>search protocol</i>), which contains all of the information necessary to specify how the search should be performed on a model.
 The BehaviorSearch GUI helps you create, open, modify, and save these experiments (stored as files with the ".bsearch" extension).
 </p>
 <p>
@@ -90,11 +90,11 @@ We will now discuss each of these regions in more detail, and how the various op
 <!-- ------------  --> <br/><hr/><br/> <!-- ------------  -->
 <a name="parameterspace"></a>
 <h3>Specifying a parameter space</h3>
-<p> 
+<p>
 First, choose the model you are interested in exploring (with the "Browse for model" button, or by typing in the path).  Let's assume you choose the <a href="http://ccl.northwestern.edu/netlogo/models/Flocking">Flocking model</a> from NetLogo's models library (in the Biology category).
 </p>
 <p>
-The next step is to specify settings, or ranges of settings, for each of the model's parameters.  The easiest way to get started is to click the "Load param ranges from model interface" button, which will automatically extract the parameters/ranges that are included in your model's interface tab (i.e. SLIDERS, CHOOSERS, and SWITCHES).  
+The next step is to specify settings, or ranges of settings, for each of the model's parameters.  The easiest way to get started is to click the "Load param ranges from model interface" button, which will automatically extract the parameters/ranges that are included in your model's interface tab (i.e. SLIDERS, CHOOSERS, and SWITCHES).
 </p>
 <div class="figure">
 <img src="img/flocking_searchspecFx.png" width="350" class="withborder"/>
@@ -112,7 +112,7 @@ One search space specification for the Flocking model consists of the following 
 ["max-separate-turn" [0 0.25 20]]<br/>
 ["max-cohere-turn" [0 0.25 20]]<br/>
 </tt></p>
-<p> In this case, the <tt>population</tt> parameter (number of birds) is being held constant, whereas each of the other parameters are allowed to range.  
+<p> In this case, the <tt>population</tt> parameter (number of birds) is being held constant, whereas each of the other parameters are allowed to range.
 For instance, the <tt>vision</tt> parameter ranges from 0 up to 10, by increments of 0.25.
 </p>
 <p>
@@ -122,33 +122,33 @@ The total size of this search space is 41&times;21&times;81&times;81&times;81 = 
 You may notice that the syntax for specifying parameter ranges is <i>very</i> similar to that for <i>BehaviorSpace</i>.  However, in <i>BehaviorSearch</i> it is also possible to specify a continuous range for a parameter, by using "C" for the increment -- see examples below.
 <ul>
 <li>Boolean and discrete-choice parameters (i.e. switches and choosers):  <tt>["variable-name" choice1 choice2 ...]</tt>
-	<ul><li>Ex. 1) <tt>["wind?" true false]</tt></li>
-		<li>Ex. 2) <tt>["neighborhood-mode" "Moore" "Von Neumann"]</tt></li></ul>
+    <ul><li>Ex. 1) <tt>["wind?" true false]</tt></li>
+        <li>Ex. 2) <tt>["neighborhood-mode" "Moore" "Von Neumann"]</tt></li></ul>
 </li>
 <li>Integer and numeric ranges:  <tt>["variable-name" [start increment stop]]</tt>
-	<ul><li>Ex. 1) <tt>["population" [100 10 200]]</tt>  &rarr; (100,110,120,...,200) </li>
-		<li>Ex. 2) <tt>["death-rate" [0.2 0.01 0.4]]</tt> &rarr; (0.2, 0.21, 0.22, ... 0.4)</li>
-		<li>Ex. 3) <tt>["death-rate" [0.2 "C" 0.4]]</tt> &rarr; (all numbers between 0.2 and 0.4)</li></ul>
+    <ul><li>Ex. 1) <tt>["population" [100 10 200]]</tt>  &rarr; (100,110,120,...,200) </li>
+        <li>Ex. 2) <tt>["death-rate" [0.2 0.01 0.4]]</tt> &rarr; (0.2, 0.21, 0.22, ... 0.4)</li>
+        <li>Ex. 3) <tt>["death-rate" [0.2 "C" 0.4]]</tt> &rarr; (all numbers between 0.2 and 0.4)</li></ul>
 </li>
 </ul>
-</p>		
+</p>
 <br/>
 
 <div class="box"><strong>Note:</strong> With <i>BehaviorSearch</i> you are specifying only the potential range of variables for the search space, unlike with <i>BehaviorSpace</i>, where every combination will be run.  The size of the search space will often be very large, and the search algorithms you choose will only examine a small fraction of it.  If you want to perform an exhaustive (factorial-type) search, you should use the BehaviorSpace tool that's built-in to NetLogo.  BehaviorSearch is useful when you have a parameter space that's too large too enumerate, and you're willing to use heuristic search methods to try to find parameters that yield behavior that you're interested in.</div>
 
-<div class="small box"><strong>Technical note:</strong> Although you may specify "C" for a continuous ranged parameter, the range may still be discretized if the <i>search space encoding representation</i> that you choose does not support continuous/ real-valued numbers.  
+<div class="small box"><strong>Technical note:</strong> Although you may specify "C" for a continuous ranged parameter, the range may still be discretized if the <i>search space encoding representation</i> that you choose does not support continuous/ real-valued numbers.
 For instance, the StandardBinaryChromosome and GrayBinaryChromosome encodings will use only 16 bits for a continuous parameter, which allows the parameter to take on up to 65,536 values.
 For encodings that do allow continous parameters (such as MixedTypeChromosome), the "continuous" variable will technically be limited to 64-bit floating-point precision.  </div>
 
 <!-- ------------  --> <br/><hr/><br/> <!-- ------------  -->
 <a name="designmeasure"></a>
 <h3>Designing a behavioral measure</h3>
-<p> Designing a quantative measure that captures the extent to which a model exhibits some type of behavior is often the most challenging part of the process.  
-This is particularly the case if the behavior of interest is particularly qualitative in nature, or involves complex relationships between groups of agents.  
+<p> Designing a quantative measure that captures the extent to which a model exhibits some type of behavior is often the most challenging part of the process.
+This is particularly the case if the behavior of interest is particularly qualitative in nature, or involves complex relationships between groups of agents.
 While it can sometimes be difficult to design an appropriate measure for your particular ABM and behavior, once you have done so it becomes possible to automate the task of searching for that behavior in your model.
 
-For the sake of this tutorial, we will only discuss reasonably simple and straightforward behavioral measures.  
-However, in general the measures can be quite complex and powerful, and can address a variety of model exploration and analysis tasks.  
+For the sake of this tutorial, we will only discuss reasonably simple and straightforward behavioral measures.
+However, in general the measures can be quite complex and powerful, and can address a variety of model exploration and analysis tasks.
 </p>
 <div class="small box"><strong>Note:</strong> Proper methodology for the design of quantitative measures for ABM parameter search is an area of future research -- we plan to publish a more complete discussion of this topic, including a range of richer examples in the future.  At present, some preliminary work discussing these ideas can be found on the <a href="http://www.behaviorsearch.org/papers.html">papers page</a>.)
 </div>
@@ -157,8 +157,8 @@ However, in general the measures can be quite complex and powerful, and can addr
 <br/>
 
 <p>
-For the Flocking model, one potentially interesting question is about the convergence of the flock of birds.  
-In particular, let's investigate directional convergence (as opposed to positional convergence).  
+For the Flocking model, one potentially interesting question is about the convergence of the flock of birds.
+In particular, let's investigate directional convergence (as opposed to positional convergence).
 In the Flocking model, the birds all start facing random directions, but (depending on the parameter settings) they may all converge on the same heading eventually.
 In this example, our search task will be to find what parameters cause the most convergence to happen quickly.
 </p>
@@ -170,7 +170,7 @@ Specifications for our example are shown in Figure 3; we will discuss them each 
 
 <div class="figure">
 <img src="img/flocking_modelruninfoFx.png" width="250"class="withborder"/>
-<p>Figure 3: Specifying how the model should be run, 
+<p>Figure 3: Specifying how the model should be run,
 <br/>what data to collect, and when to record it.</p>
 </div>
 
@@ -191,8 +191,8 @@ Specifications for our example are shown in Figure 3; we will discuss them each 
 <br/>
 </p>
 <p>
-The measure can consist of any numeric NetLogo expression - what's important is that the measure is correlated with the behavior we would like to elicit from the model.  In this case, we are measuring the sum of the variation of turtles headings in both the X and Y directions.  
-When this measure is high, turtles are pointed all over.  When this measure is 0, all of the turtles have exactly the same heading.  
+The measure can consist of any numeric NetLogo expression - what's important is that the measure is correlated with the behavior we would like to elicit from the model.  In this case, we are measuring the sum of the variation of turtles headings in both the X and Y directions.
+When this measure is high, turtles are pointed all over.  When this measure is 0, all of the turtles have exactly the same heading.
 Finding convergence is the same as minimizing this measure of flock heading variation.
 We will start recording this measure after 75 ticks have passed, and we are only running the model for 100 steps in total, meaning that we will be recording data between tick 75 and tick 100.
 </p>
@@ -200,7 +200,7 @@ We will start recording this measure after 75 ticks have passed, and we are only
 <h4>Designing the objective function:</h4>
 <br/>
 
-<p>Above, we specified how to collect the data we need from the model in order to perform our search.  However, there are several more things that must be specified before our search goal is completely defined.  
+<p>Above, we specified how to collect the data we need from the model in order to perform our search.  However, there are several more things that must be specified before our search goal is completely defined.
 
 We know how to collect the data, but now we need to turn it into an objective function (a.k.a. "fitness function").  For our flocking convergence example, the additional information we must fill in is shown in Figure 4.
 </p>
@@ -219,24 +219,24 @@ We know how to collect the data, but now we need to turn it into an objective fu
 <li>Also, the AT_FINAL_STEP choice is useful if you are only interested in the last measure that was recorded.</li>
 </ul>
 </li>
-<li><strong>Sampling:</strong> How many times should the model be run?  Running the model once may not give representative results, so you may want to perform multiple replicate runs (with different initial random seeds), and collect behavioral measures from each of them. 
+<li><strong>Sampling:</strong> How many times should the model be run?  Running the model once may not give representative results, so you may want to perform multiple replicate runs (with different initial random seeds), and collect behavioral measures from each of them.
 <ul><li>For this example, we will run the Flocking model 5 times.</li>
 <li><span class="small">(Technical note: BehaviorSearch currently only supports fixed sampling, though in the future more advanced search techniques might use adaptive sampling methods.)</span></li>
 </ul>
-<li><strong>Combine replicates:</strong> If you are doing multiple replicate runs of the model, how do you combine those results, to get a single number for our objective function? 
+<li><strong>Combine replicates:</strong> If you are doing multiple replicate runs of the model, how do you combine those results, to get a single number for our objective function?
 <ul><li>For this example, we will be taking the MEAN (average) result of the 5 model runs.</li>
 <li>MEDIAN may be a better choice if your measure occasionally yields ridiculously high or low outlier values, which you'd like to ignore.</li>
 <li>On the other hand, MIN/MAX may be useful choices if you want to search for parameters that cause extreme behavior, while ignoring average behavior.</li>
-<li>The VARIANCE choices may be useful for finding parameters for which there is volatility in whether the model exhibits a behavior or not.  
+<li>The VARIANCE choices may be useful for finding parameters for which there is volatility in whether the model exhibits a behavior or not.
 Such volatility <i>might</i> indicate a phase transition between two regimes of model behavior.  STDEV is the same, except that the fitness function values will be in the same units of the original parameter, which may be preferable for human interpretation.</li>
 </ul>
 </li>
-<li><strong>Take derivative?</strong> Sometimes you would like to find a point in the parameter space where the change in your behavioral measure is maximized (or minimized) with respect to a small change in some parameter.  
-Such places may indicate a <i>phase transition</i>, <i>critical point</i>, or <i>leverage point</i>.  
-The <strong>Take derivative?</strong> option allows you to maximize/minimize the approximate derivative of your fitness function with respect to a specified parameter and a specified <em>delta</em> (change amount).  
+<li><strong>Take derivative?</strong> Sometimes you would like to find a point in the parameter space where the change in your behavioral measure is maximized (or minimized) with respect to a small change in some parameter.
+Such places may indicate a <i>phase transition</i>, <i>critical point</i>, or <i>leverage point</i>.
+The <strong>Take derivative?</strong> option allows you to maximize/minimize the approximate derivative of your fitness function with respect to a specified parameter and a specified <em>delta</em> (change amount).
 <ul><li>If <strong>Use ABS value?</strong> is checked, then the reported difference is always positive.</li>
     <li>If you choose the special value &ldquo;@MUTATE@&rdquo; then finds a neighboring point in the search space using mutation from the parameter settings being evaluated, with the mutation rate specified by <em>delta</em>.</li>
-	<li>This Flocking example does not use the derivative functionality, but the <i>Example Fire Derivative</i> example that comes with BehaviorSearch does.</li>
+    <li>This Flocking example does not use the derivative functionality, but the <i>Example Fire Derivative</i> example that comes with BehaviorSearch does.</li>
 </ul>
 </li>
 
@@ -246,17 +246,17 @@ The <strong>Take derivative?</strong> option allows you to maximize/minimize the
 <!-- ------------  --> <br/><hr/><br/> <!-- ------------  -->
 <a name="choosealgorithm"></a>
 <h3>Choosing a search algorithm</h3>
-<p> Once the objective function is fully specified, the final choice is about how the parameter space should be represented and explored.  
+<p> Once the objective function is fully specified, the final choice is about how the parameter space should be represented and explored.
 This involves choosing a search encoding representation (for the search space), as well as choosing a search algorithm and setting the necessary parameters for that search algorithm.
 The choices for the Flocking convergence example are shown in Figure 5.
 </p>
 
 <div class="box">
 <strong>Making choices:</strong>
-Choosing the search algorithm, search algorithm parameters, and search space representation can feel very daunting.  
+Choosing the search algorithm, search algorithm parameters, and search space representation can feel very daunting.
 The terminology is rather abstruse, and it's not necessarily clear what the best choice is.
 Part of our ongoing research agenda involves comparing the performance of various algorithms and developing guidelines for choosing efficient/appropriate search techniques.
-Eventually standards and guidelines will emerge, to help with this decision-making process.  
+Eventually standards and guidelines will emerge, to help with this decision-making process.
 Until then, we offer a few general guidelines in this tutorial, and encourage you to explore several options and see what works best for you.
 <br/><br/>
 Poor choices may cause the search to progress more slowly (or totally stall).
@@ -266,7 +266,7 @@ On the other hand, positive results tell you that the behavior does occur, and a
 
 <div class="figure">
 <img src="img/flocking_searchalgorithmoptionsFx.png" width="400" class="withborder"/>
-<p>Figure 5: Search algorithm options 
+<p>Figure 5: Search algorithm options
 <br/>and search space representation.</p>
 </div>
 
@@ -289,7 +289,7 @@ BehaviorSearch currently supports four different search space encodings (and its
 
 <p>
 The search algorithm determines what order the different parameter settings will be tried in, in order to find the behavior that you quantified above.
-</p>		
+</p>
 
 <p>BehaviorSearch currently includes 4 search algorithms (though additional algorithms will be added in future releases).  Here is a description of each:</p>
 
@@ -324,26 +324,26 @@ Higher values cause more <I>selection pressure</I> which will push the GA popula
 
 <br/>
 <div class="box">
-<strong>Note on mutation:</strong> The mutation-rate affects different search space representations differently.  
+<strong>Note on mutation:</strong> The mutation-rate affects different search space representations differently.
 In the StandardBinary and GrayBinary encodings, the mutation-rate is the probability of each bit mutating, whereas for the MixedType and RealHypercube, it is the probability of each whole parameter mutating.  Thus, you should generally use much higher mutation-rates (~ 0.5) for the MixedType and RealHypercube representations, and much lower rates (~ 0.02) for binary encodings.
 </div>
 <br/>
 
 <h4>Fitness Caching</h4>
 
-<p>There is also a checkbox labeled <strong>Use fitness caching</strong>.  
+<p>There is also a checkbox labeled <strong>Use fitness caching</strong>.
 This controls whether the search algorithm caches (memorizes) the result of the objective (fitness) function every time it gets evaluated, so that it doesn't have to recompute it if the search returns to those exact same parameter settings again.
-Since running ABM simulations can be time-consuming (especially when dealing with large agent populations for many ticks), turning on "fitness caching" can potentially be a considerable time-saver.  
-<i>However</i>, because ABMs are usually stochastic, each time a point in the space is re-evaluated, the search process would get a new independent estimation of the value at that location.  
+Since running ABM simulations can be time-consuming (especially when dealing with large agent populations for many ticks), turning on "fitness caching" can potentially be a considerable time-saver.
+<i>However</i>, because ABMs are usually stochastic, each time a point in the space is re-evaluated, the search process would get a new independent estimation of the value at that location.
 The trade-offs in the interaction between the effects of fitness caching and "noisy" fitness evaluation have not been fully investigated -- at present it is unclear precisely when fitness caching will improve overall search performance.</p>
 
-<p>For this tutorial example on Flocking convergence, we are using fitness caching and a GrayBinaryChromosome search space encoding representation, together with a standard generational GA with a population size of 30, a 5% mutation rate, and a crossover rate of 70%, using tournament selection with tournament size 3.  
-For this model and search task, these choices were found to be effective (and far superior to RandomSearch).  
+<p>For this tutorial example on Flocking convergence, we are using fitness caching and a GrayBinaryChromosome search space encoding representation, together with a standard generational GA with a population size of 30, a 5% mutation rate, and a crossover rate of 70%, using tournament selection with tournament size 3.
+For this model and search task, these choices were found to be effective (and far superior to RandomSearch).
 However, we have not exhaustively tested combinations of search algorithms, search algorithm parameters, and encodings, so other choices might prove  to be more efficient.
 </p>
 
 <p><strong>Evaluation limit:</strong> How many total model runs should the search process perform, before stopping?</p>
-<p><strong>BestChecking replicates:</strong> the number of additional replicate model runs that should be performed to get an unbiased estimate of the true objective function value, each time the search algorithm finds a new set of parameters that it thinks is "better" than any previous set.  
+<p><strong>BestChecking replicates:</strong> the number of additional replicate model runs that should be performed to get an unbiased estimate of the true objective function value, each time the search algorithm finds a new set of parameters that it thinks is "better" than any previous set.
 <ul><li>The motivation for this is that ABMs are usually stochastic, and when sampling a measure a small/finite number of times (such as 5, in our example here), there is likely to still be some "noise" in the objective function.  Thus a search algorithm may appear to be making progress, finding better and better parameter settings, when in fact the better results are due to random noise.  Using <i>BestChecking</i> replicates can help you identify when this is the case.</li>
 <li>Also, since new "bests" are found relatively infrequently, you can usually afford to specify a higher number of BestChecking replicates than you can for normal sampling, yielding more statistically significant reading of the objective function as the best parameters that the search found.</li>
 <li>BestChecking replicates are not counted against the total "model run" limit for the search.  These replicates are extrinsic to the search process, but are included in the output results to evaluate the search performance, and verify the objective function values that are obtained. </li>
@@ -357,7 +357,7 @@ However, we have not exhaustively tested combinations of search algorithms, sear
 <p>Figure 6: Run options dialog.</p>
 </div>
 <br/>
-<p> 
+<p>
 After setting all of those options for how to perform the search, we are almost ready to hit the <strong>Run BehaviorSearch</strong> button, down in the lower right corner of the window.
 However, first we should save this "search protocol" file that we've been editing, using the File->Save menu item.
 </p>
@@ -376,7 +376,7 @@ However, first we should save this "search protocol" file that we've been editin
 </li>
 <li><strong>Number of threads: </strong> Using multiple threads can significantly speed up the search process (on multi-processor/multi-core computers).  <i>(Different numbers of threads should only affect running-time, and not the results obtained)</i>.
 </li>
-<li><strong>Brief Output? </strong> BehaviorSearch's default behavior is to create a variety of output data files (discussed below), some of which can be quite large (containig the results of all model runs and all objective function evaluations).  
+<li><strong>Brief Output? </strong> BehaviorSearch's default behavior is to create a variety of output data files (discussed below), some of which can be quite large (containig the results of all model runs and all objective function evaluations).
 Selecting this checkbox suppresses the creation of the two largest output files.
 </li>
 </ul>
@@ -394,10 +394,10 @@ Selecting this checkbox suppresses the creation of the two largest output files.
 While the search is running, you will see a progress dialog (similar to Figure 7).
 </p>
 
-<p>The most significant part of this dialog is the plot showing the searches' progress.  
-On the x-axis is the number of model runs that the search has performed (again, note that this number does not count model runs due to BestChecking).  
-On the y-axis is the current best fitness (objective) function value that the search has discovered so far. 
-If BestChecking replicates are used, the plot shows the independently "re-checked" fitness values.  
+<p>The most significant part of this dialog is the plot showing the searches' progress.
+On the x-axis is the number of model runs that the search has performed (again, note that this number does not count model runs due to BestChecking).
+On the y-axis is the current best fitness (objective) function value that the search has discovered so far.
+If BestChecking replicates are used, the plot shows the independently "re-checked" fitness values.
 If not, then the plot will show the fitness values that the search algorithm observed.
 </p>
 
@@ -418,7 +418,7 @@ If not, then the plot will show the fitness values that the search algorithm obs
 <h4>Examining the results:</h4><br/>
 
 <p>
-While future versions of BehaviorSearch may include some tools/scripts for visualizing the search results, currently the output data is given in several files, using the straightforward CSV (comma separated value) file format, and the methods of processing or visualizing it are up to you (Excel, <a href="http://www.r-project.org/">R</a>, <a href="http://www.scipy.org/">SciPy</a>/<a href="http://matplotlib.sourceforge.net/">matplotlib</a>, etc).  
+While future versions of BehaviorSearch may include some tools/scripts for visualizing the search results, currently the output data is given in several files, using the straightforward CSV (comma separated value) file format, and the methods of processing or visualizing it are up to you (Excel, <a href="http://www.r-project.org/">R</a>, <a href="http://www.scipy.org/">SciPy</a>/<a href="http://matplotlib.sourceforge.net/">matplotlib</a>, etc).
 Here is the list of output files that were generated for our Flocking convergence example:
 </p>
 
@@ -431,10 +431,10 @@ Here is the list of output files that were generated for our Flocking convergenc
 <li><strong>example_flocking.finalCheckedBests.csv - </strong> This file is similar to the .finalBests.csv file, but rather than listing the best parameter settings found <i>by</i> each search process, it lists the parameter settings that (using the extrinsic BestChecking), were found to have the best independently verified objective function value.  Parameter settings listed in this file are the most likely to be the best (<i>although if the objective function is noisy, the objective function values reported here may be an overestimate of the real objective function value, as a result of the bias incurred by selecting the best out of the set</i>).    </li>
 </ul>
 
-The most basic usage of search results is to look at the parameter settings in the final best files, and then open your agent-based model back up in NetLogo and run the model with those parameters, to see how the model behaves under these conditions.  
+The most basic usage of search results is to look at the parameter settings in the final best files, and then open your agent-based model back up in NetLogo and run the model with those parameters, to see how the model behaves under these conditions.
 Doing this can help uncover unexpected or interesting behavior occurring in the model, and it can also help you identify whether the quantitative measure of model behavior that you created is doing a sufficiently good job of identifying the type of behavior that you are interested in.
 
-For further discussion of the type of graphs that one might make, or inferences that one might draw from search results, you might find it useful to read &ldquo;Finding Forms of Flocking&rdquo; or one of the other papers linked to on the <a href="http://www.behaviorsearch.org/papers.html">papers page</a>.  
+For further discussion of the type of graphs that one might make, or inferences that one might draw from search results, you might find it useful to read &ldquo;Finding Forms of Flocking&rdquo; or one of the other papers linked to on the <a href="http://www.behaviorsearch.org/papers.html">papers page</a>.
 
 This paper discusses results for a Flocking convergence search experiment very similar to the one presented here, as well as several examples of searching for other types of flocking behavior.
 
@@ -471,14 +471,14 @@ To see the command line argument options, just run it without any arguments, as 
 <!-- ------------  --> <br/><hr/><br/> <!-- ------------  -->
 <a name="morehelp"></a>
 <h2>Additional help, feedback, bug reports, etc.</h2>
-<h4>Additional help:</h4> 
-<p>At present, this tutorial is the only documentation available for BehaviorSearch, apart from some context-sensitive help in the software (in the form of mouse-over tooltips and help buttons).  
+<h4>Additional help:</h4>
+<p>At present, this tutorial is the only documentation available for BehaviorSearch, apart from some context-sensitive help in the software (in the form of mouse-over tooltips and help buttons).
 However, if you have questions that were not covered in this documentation, please <a href="http://www.behaviorsearch.org/contact_us.html">contact us</a>, and we will do our best to respond promptly with answers. </p>
 
-<h4>Feedback and bugs:</h4> 
+<h4>Feedback and bugs:</h4>
 
 <p>Both the BehaviorSearch software and the accompanying documentation are in an active state of development.  The most recent version of the software can be obtained from <a href="http://www.behaviorsearch.org/">www.behaviorsearch.org</a>.
-If you find <strong>errors</strong> in this tutorial, or <strong>bugs</strong> in the software itself, please <a href="http://www.behaviorsearch.org/contact_us.html">contact us</a> and report the issue!  
+If you find <strong>errors</strong> in this tutorial, or <strong>bugs</strong> in the software itself, please <a href="http://www.behaviorsearch.org/contact_us.html">contact us</a> and report the issue!
 </p><p>
 Likewise, we welcome general comments and feature requests.
 </p>
@@ -487,40 +487,40 @@ Likewise, we welcome general comments and feature requests.
 </div>
 
 <!--
-		<div class="box">
-			<strong>Note:</strong> This is a box.
-		</div>
-		<div class="splitcontentleft">
-			<h2>Included Style Examples:</h2>
-			<div class="box">
-				<h3>Sub-header example</h3>
-				<p>This is regular text, which is aligned to the left by default. You can easily change the alignment using the classes .textcenter and .textright on each paragraph.</p>
-				<p><span class="important">This is an important note!</span><br />
-				<a href="#">This is a link.</a><br />
-				<strong>This is strong text.</strong><br />
-				<span class="small">This is small text.</span></p>
-				<ul>
-					<li>Unordered list option 1</li>
-					<li>Unordered list option 2</li>
-				</ul>
-				<ol>
-					<li>Ordered list option 1</li>
-					<li>Ordered list option 2</li>
-				</ol>
-				<dl>
-					<dt>Definition list dt</dt>
-					<dd>Definition list dd</dd>
-				</dl>
-			</div>
-		</div>
+        <div class="box">
+            <strong>Note:</strong> This is a box.
+        </div>
+        <div class="splitcontentleft">
+            <h2>Included Style Examples:</h2>
+            <div class="box">
+                <h3>Sub-header example</h3>
+                <p>This is regular text, which is aligned to the left by default. You can easily change the alignment using the classes .textcenter and .textright on each paragraph.</p>
+                <p><span class="important">This is an important note!</span><br />
+                <a href="#">This is a link.</a><br />
+                <strong>This is strong text.</strong><br />
+                <span class="small">This is small text.</span></p>
+                <ul>
+                    <li>Unordered list option 1</li>
+                    <li>Unordered list option 2</li>
+                </ul>
+                <ol>
+                    <li>Ordered list option 1</li>
+                    <li>Ordered list option 2</li>
+                </ol>
+                <dl>
+                    <dt>Definition list dt</dt>
+                    <dd>Definition list dd</dd>
+                </dl>
+            </div>
+        </div>
 -->
-	
-	</div>
 
-	<div id="footer">
-		<p>Tutorial &copy; 2010 Forrest Stonedahl </p>
-	</div>
+    </div>
 
-	</div>
+    <div id="footer">
+        <p>Tutorial &copy; 2010 Forrest Stonedahl </p>
+    </div>
+
+    </div>
 </body>
 </html>

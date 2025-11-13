@@ -227,9 +227,9 @@ end
   </widgets>
   <info><![CDATA[## FORWARD NOTE
 
-This is the BehaviorSearch benchmarking version of the classic NetLogo Fireflies model.  Modifications:   
-1) added "visuals?" on-off switch, for increased speed. (doesn't affect model behavior)  
-2) added "calibrate" reporter to measure correlation with Isle Royale data (doesn't affect model behavior)   
+This is the BehaviorSearch benchmarking version of the classic NetLogo Fireflies model.  Modifications:
+1) added "visuals?" on-off switch, for increased speed. (doesn't affect model behavior)
+2) added "calibrate" reporter to measure correlation with Isle Royale data (doesn't affect model behavior)
 3) Added additional TICKS-PER-YEAR slider, for use with calibrating simulation time to real-world historical time from the Isle Royale dataset. (doesn't affect model behavior)
 
 
@@ -249,26 +249,26 @@ The construction of this model is described in two papers by Wilensky & Reisman 
 
 ## HOW TO USE IT
 
-1. Set the GRASS? switch to TRUE to include grass in the model, or to FALSE to only include wolves (red) and sheep (white).  
-2. Adjust the slider parameters (see below), or use the default settings.  
-3. Press the SETUP button.  
-4. Press the GO button to begin the simulation.  
-5. Look at the monitors to see the current population sizes  
+1. Set the GRASS? switch to TRUE to include grass in the model, or to FALSE to only include wolves (red) and sheep (white).
+2. Adjust the slider parameters (see below), or use the default settings.
+3. Press the SETUP button.
+4. Press the GO button to begin the simulation.
+5. Look at the monitors to see the current population sizes
 6. Look at the POPULATIONS plot to watch the populations fluctuate over time
 
-Parameters:  
-INITIAL-NUMBER-SHEEP: The initial size of sheep population  
-INITIAL-NUMBER-WOLVES: The initial size of wolf population  
-SHEEP-GAIN-FROM-FOOD: The amount of energy sheep get for every grass patch eaten  
-WOLF-GAIN-FROM-FOOD: The amount of energy wolves get for every sheep eaten  
-SHEEP-REPRODUCE: The probability of a sheep reproducing at each time step  
-WOLF-REPRODUCE: The probability of a wolf reproducing at each time step  
-GRASS?: Whether or not to include grass in the model  
-GRASS-REGROWTH-TIME: How long it takes for grass to regrow once it is eaten  
+Parameters:
+INITIAL-NUMBER-SHEEP: The initial size of sheep population
+INITIAL-NUMBER-WOLVES: The initial size of wolf population
+SHEEP-GAIN-FROM-FOOD: The amount of energy sheep get for every grass patch eaten
+WOLF-GAIN-FROM-FOOD: The amount of energy wolves get for every sheep eaten
+SHEEP-REPRODUCE: The probability of a sheep reproducing at each time step
+WOLF-REPRODUCE: The probability of a wolf reproducing at each time step
+GRASS?: Whether or not to include grass in the model
+GRASS-REGROWTH-TIME: How long it takes for grass to regrow once it is eaten
 SHOW-ENERGY?: Whether or not to show the energy of each animal as a number
 
-Notes:  
-- one unit of energy is deducted for every step a wolf takes  
+Notes:
+- one unit of energy is deducted for every step a wolf takes
 - when grass is included, one unit of energy is deducted for every step a sheep takes
 
 ## THINGS TO NOTICE
@@ -309,24 +309,24 @@ Look at Rabbits Grass Weeds for another model of interacting populations with di
 
 Wilensky, U. & Reisman, K. (1999). Connected Science: Learning Biology through Constructing and Testing Computational Theories -- an Embodied Modeling Approach. International Journal of Complex Systems, M. 234, pp. 1 - 12. (This model is a slightly extended version of the model described in the paper.)
 
-Wilensky, U. & Reisman, K. (2006). Thinking like a Wolf, a Sheep or a Firefly: Learning Biology through Constructing and Testing Computational Theories -- an Embodied Modeling Approach. Cognition & Instruction, 24(2), pp. 171-209.  
+Wilensky, U. & Reisman, K. (2006). Thinking like a Wolf, a Sheep or a Firefly: Learning Biology through Constructing and Testing Computational Theories -- an Embodied Modeling Approach. Cognition & Instruction, 24(2), pp. 171-209.
 http://ccl.northwestern.edu/papers/wolfsheep.pdf
 
 ## HOW TO CITE
 
-If you mention this model in an academic publication, we ask that you include these citations for the model itself and for the NetLogo software:  
-- Wilensky, U. (1997).  NetLogo Wolf Sheep Predation model.  http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.  
+If you mention this model in an academic publication, we ask that you include these citations for the model itself and for the NetLogo software:
+- Wilensky, U. (1997).  NetLogo Wolf Sheep Predation model.  http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
 - Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
 
-In other publications, please use:  
+In other publications, please use:
 - Copyright 1997 Uri Wilensky. All rights reserved. See http://ccl.northwestern.edu/netlogo/models/WolfSheepPredation for terms of use.
 
 ## COPYRIGHT NOTICE
 
 Copyright 1997 Uri Wilensky. All rights reserved.
 
-Permission to use, modify or redistribute this model is hereby granted, provided that both of the following requirements are followed:  
-a) this copyright notice is included.  
+Permission to use, modify or redistribute this model is hereby granted, provided that both of the following requirements are followed:
+a) this copyright notice is included.
 b) this model will not be redistributed for profit without permission from Uri Wilensky. Contact Uri Wilensky for appropriate licenses for redistribution for profit.
 
 This model was created as part of the project: CONNECTED MATHEMATICS: MAKING SENSE OF COMPLEX PHENOMENA THROUGH BUILDING OBJECT-BASED PARALLEL MODELS (OBPML).  The project gratefully acknowledges the support of the National Science Foundation (Applications of Advanced Technologies Program) -- grant numbers RED #9552950 and REC #9632612.

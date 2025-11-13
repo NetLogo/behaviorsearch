@@ -21,10 +21,10 @@ img.right {float:right; margin:0 0 5px 12px;}
 #header {height:110px; width:758px; margin:0 1px 1px 1px; background:#464646; color:#ffffff;}
 #header h1 {padding:35px 0 0 20px; font-size:2.4em; background-color:inherit; color: #80b0da; letter-spacing:-2px; font-weight:normal;}
 #header h2 {margin:10px 0 0 40px; font-size:1.4em; background-color:inherit; color:#f0f2f4; letter-spacing:-1px; font-weight:normal;}
-#header img { 
+#header img {
 float:left;
 padding:1px;
-margin: 4px 12px 4px 4px; 
+margin: 4px 12px 4px 4px;
 }
 #navigation {height:2.2em; line-height:2.2em; width:758px; margin:0 1px; background:#575757; color:#ffffff;}
 #navigation li {float:left; list-style-type:none; border-right:1px solid #ffffff; white-space:nowrap;}

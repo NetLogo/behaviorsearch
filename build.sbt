@@ -35,14 +35,14 @@ artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
   artifact.name + "." + artifact.extension
 }
 
-Compile / javacOptions      ++= List("-g", "-deprecation", "--release", "11")
+Compile / javacOptions      ++= List("-g", "-deprecation", "--release", "17")
 Compile / javaSource         := baseDirectory.value / "src"
 Compile / resourceDirectory  := baseDirectory.value / "src"
 
 unmanagedResources / includeFilter := "*.fxml"
 unmanagedSources   / excludeFilter := "*test*"
 
-Test / javacOptions ++= List("-g", "-deprecation", "--release", "11")
+Test / javacOptions ++= List("-g", "-deprecation", "--release", "17")
 Test / javaSource    := baseDirectory.value / "src"
 Test / testOptions   := Seq(Tests.Argument(TestFrameworks.JUnit, "-a"))
 

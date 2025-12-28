@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -266,7 +267,7 @@ public class SearchProtocol
             AttributesImpl atts = new AttributesImpl() ;
 
             hd.startElement( "" , "" , "search" , noAtts ) ;
-                xmlElementNoAtts(hd, "bsearchVersionNumber", String.format("%.2f", GeneralUtils.getVersionNumber()));
+                xmlElementNoAtts(hd, "bsearchVersionNumber", String.format(Locale.US, "%.2f", GeneralUtils.getVersionNumber()));
                 hd.startElement( "" , "" , "modelInfo" , noAtts );
                     xmlElementNoAtts(hd, "modelFile", modelFile ) ;
                     xmlElementNoAtts(hd, "modelSetupCommands", modelSetupCommands ) ;

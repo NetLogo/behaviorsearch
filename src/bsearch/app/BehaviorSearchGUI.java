@@ -1448,7 +1448,7 @@ public class BehaviorSearchGUI extends javax.swing.JFrame {
 
     private void actionHelpTutorial() {
         org.nlogo.swing.BrowserLauncher.openPath(this,
-      Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html")), "");
+      Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorial.html")));
     }
 
     private void actionHelpAbout() {

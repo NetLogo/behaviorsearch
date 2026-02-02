@@ -288,7 +288,7 @@ public class MainController implements Initializable {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                    BrowserLauncher.openPath(Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html")), "");
+                BrowserLauncher.openPath(null, Path.of(GeneralUtils.attemptResolvePathFromBSearchRoot("documentation/tutorialFx.html")));
             }
         });
     }

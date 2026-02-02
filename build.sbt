@@ -4,9 +4,9 @@ isSnapshot   := true
 
 scalaVersion := "2.13.16"
 
-val netLogoVersion = settingKey[String]("active version of NetLogo")
+val nlVersion = settingKey[String]("active version of NetLogo")
 
-netLogoVersion := "7.0.0-2486d1e"
+nlVersion := "7.0.0-2486d1e"
 
 resolvers ++= Seq(
   "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
@@ -25,7 +25,7 @@ libraryDependencies ++= {
   if (description.value.contains("subproject of NetLogo"))
     Seq()
   else
-    Seq("org.nlogo" % "netlogo" % netLogoVersion.value
+    Seq("org.nlogo" % "netlogo" % nlVersion.value
       exclude("org.jogamp.jogl",    "jogl-all")
       exclude("org.jogamp.gluegen", "gluegen-rt")
     )

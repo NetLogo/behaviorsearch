@@ -17,8 +17,8 @@ libraryDependencies ++= Seq(
 , "jfree"              % "jcommon"         % "1.0.16"
 , "args4j"             % "args4j"          % "2.0.12"
 , "com.novocode"       % "junit-interface" % "0.11" % "test"
-, "org.jogamp.jogl"    %  "jogl-all"       % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/jogl-all.jar"
-, "org.jogamp.gluegen" %  "gluegen-rt"     % "2.4.0" from "https://jogamp.org/deployment/archive/rc/v2.4.0/jar/gluegen-rt.jar"
+, "org.jogamp.jogl"    %  "jogl-all"       % "2.4.0" from "https://s3.amazonaws.com/ccl-artifacts/jogl-all-2.4.0.jar"
+, "org.jogamp.gluegen" %  "gluegen-rt"     % "2.4.0" from "https://s3.amazonaws.com/ccl-artifacts/gluegen-rt-2.4.0.jar"
 )
 
 libraryDependencies ++= {

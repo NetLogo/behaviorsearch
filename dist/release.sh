@@ -43,8 +43,8 @@ rsync -a --exclude=.svn --exclude="*~" ../documentation /home/forrest/web_localc
 
 
 #Make ".command" files for the Mac
-cp behaviorsearch/behaviorsearch_gui.sh behaviorsearch/behaviorsearch_gui.command  
-cp behaviorsearch/behaviorsearch_headless.sh behaviorsearch/behaviorsearch_headless.command 
+cp behaviorsearch/behaviorsearch_gui.sh behaviorsearch/behaviorsearch_gui.command
+cp behaviorsearch/behaviorsearch-headless.sh behaviorsearch/behaviorsearch-headless.command
 
 echo "Creating behaviorsearch_${VERSION}.tar.gz"
 rm "behaviorsearch_${VERSION}.tar.gz"
@@ -58,7 +58,7 @@ zip -rq "behaviorsearch_${VERSION}.zip" behaviorsearch -x "*.bat" -x "*.exe"
 sed -i -e "1c \!define MUI_VERSION \"${VERSION}\"" win_installer.nsi
 
 echo "Creating behaviorsearch_${VERSION}_installer.exe"
-# use "makensis" to create windows executable.  
+# use "makensis" to create windows executable.
 makensis -V2 win_installer.nsi
 
 ##No longer copying files to web downloads... upload them to Google Code instead, using another script.

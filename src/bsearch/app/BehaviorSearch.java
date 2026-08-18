@@ -214,10 +214,10 @@ public class BehaviorSearch {
             else {
                 System.err.println(e.getMessage());
             }
-            String scriptName = "behaviorsearch_headless.sh";
+            String scriptName = "behaviorsearch-headless.sh";
             if (GeneralUtils.isOSWindows())
             {
-                scriptName = "behaviorsearch_headless.bat";
+                scriptName = "behaviorsearch-headless.bat";
             }
             System.err.println(scriptName + " [options...] arguments...");
             parser.printUsage(System.err);
